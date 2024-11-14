@@ -1,0 +1,4 @@
+# COP3530 " Data Structures and Algorithms " 3 " Amanpreet Kapoor " ~ COP3503 MAP2312 .
+* SECTION 1
+- 2 CAR0100 11 45 13 40
+- 4 CAR0100 13 55 15 50

@@ -1,0 +1,6 @@
+# CODE1234 " Course Full Name " Credits " Professor Name " ~ PREREQ1 PREREQ2 .
+* SECTION 1
+- Day ROOMCODE StartHr StartMin EndHr EndMin .
+- Day ROOMCODE StartHr StartMin EndHr EndMin .
+* SECTION 2
+- Day ROOMCODE StartHr StartMin EndHr EndMin .
