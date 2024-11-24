@@ -19,18 +19,27 @@ private:
     string major;
     string name;
     int credits;
+    int credit_limit;
     vector<string> prev_courses;  // completed classes (pre-reqs)
 
 public:
     Student(string& id, int& y, string& m, string& n, vector<string>& pc) : UFID(id), year(y), major(m), name(n), prev_courses(pc) {
+        // Hard coded values in case want to be able to change per student
         this->credits = 0;
+        this->credit_limit = 18;
     }
     Student(string& id, int& y, string& m, string& n) : UFID(id), year(y), major(m), name(n) {
         this->credits = 0;
+        this->credit_limit = 18;
     }
     string Register(string& code, map<string, Course*>& catalog, int& section) {
         // Attempts to register student for section, returns message based on success or error
         Course* to_add = catalog[code];
+
+        // 0. CHECK STUDENT HAS ADEQUATE REMAINING CREDITS
+        if (to_add->credits + this->credits > credit_limit) {
+            return "CREDIT EXCESS";  // Return credit limit reached message
+        }
 
         // 1. CHECK FOR OPEN SEATS
         if (to_add->openSeats(section) < 1) {
@@ -41,7 +50,7 @@ public:
         for (const string& req : to_add->prerequisites) {
             auto it = find(prev_courses.begin(), prev_courses.end(), req);
             if (it == prev_courses.end()) {
-                return "MISSING" + req;  // Return missing prerequisite
+                return "MISSING" + req;  // Return missing prerequisite message
             }
         }
 
