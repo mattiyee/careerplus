@@ -12,23 +12,27 @@ using namespace std;
 class Course {
     struct CourseTime {
         // Using military time
-        int start_hr;
-        int start_min;
-        int end_hr;
-        int end_min;
-
+        vector<int> periods;
         int day;  // Monday = 1, Tuesday = 2, etc...
         string location;  // Room code
 
         CourseTime(stringstream& ss) {
-            ss >> this->day >> this->location >> this->start_hr >> this->start_min >> this->end_hr >> this->end_min;
+            ss >> this->day >> this->location;
+            string indicator;
+            ss >> indicator;
+            if (indicator != ".") {
+                periods.push_back(stoi(indicator));
+                ss >> indicator;
+            }
         }
     };
-private:
     struct Section {
         vector<CourseTime*> course_times;
-        Section() {};
+        int seats;  // total seats
+        int enrolled;  // taken seats
+        Section(int& s, int& e) : seats(s), enrolled(e) {};
     };
+public:
     string code;  // ex: "COP3530"
     string name;  // ex: "Data Structures and Algorithms"
     string professor;  // ex: "Amanpreet Kapoor"
@@ -36,7 +40,6 @@ private:
     int credits;
     vector<string> prerequisites;
 
-public:
     Course(const string& c, const string& n, const string& p, const int& cr, vector<string> pre) {
         this->code = c;
         this->name = n;
@@ -44,14 +47,28 @@ public:
         this->credits = cr;
         this->prerequisites = pre;
     }
-    void addSection() {
-        Section* temp = new Section();
+    void addSection(int& s, int& e) {
+        Section* temp = new Section(s, e);
         this->sections.push_back(temp);
     }
     void addCourseTime(stringstream& ss, const int& section) {
         CourseTime* temp = new CourseTime(ss);
         this->sections[section-1]->course_times.push_back(temp);
     }
+    vector<vector<int>> allSectionTimes(const int& section) {
+        // Vector of vectors of times in a section, [days of week][period(s)]
+        vector<vector<int>> times;
+        for (CourseTime* ct : this->sections[section]->course_times) {
+            for (int p : ct->periods) {
+                times[(ct->day)-1].push_back(p);
+            }
+        }
+        return times;
+    }
+    int openSeats(const int& section) {
+        return (this->sections[section]->seats) - (this->sections[section]->enrolled);
+    }
+
 };
 
 
