@@ -18,12 +18,17 @@ class Course {
 
         CourseTime(stringstream& ss) {
             ss >> this->day >> this->location;
+            // cout << "| Day: " << day << endl;
+            // cout << "- Location: " << location << endl;
+            // cout << "- Periods: ";
             string indicator;
             ss >> indicator;
-            if (indicator != ".") {
+            while(indicator != ".") {
+                // cout << indicator << " ";
                 periods.push_back(stoi(indicator));
                 ss >> indicator;
             }
+            // cout << endl;
         }
     };
     struct Section {

@@ -1,2 +1,8 @@
-# 12345678 " Full Name " 2 " Computer Science "
+# 12345678 " Catherine Wu " 3 " Computer Science "
 - COP3502C MAC2311 MAC2312 COT3100 PHY2048 .
+
+# 87654321 " Harshil Rathod " 2 " Computer Engineering "
+- COP3503C MAC2313 MAS3114 COT3100 PHY2049 .
+
+# 13572468 " Matthew Yee " 2 " Computer Science "
+- COP3502C COP3503C MAC2313 CDA3101 PHY2048 .

@@ -12,23 +12,23 @@ using namespace std;
 
 class Student {
 private:
-    vector<Course*> courses;  // current registration
-    vector<int> sections;  // current registered sections of courses (index corresponds to courses)
-    string UFID;
-    int year;  // 1 = freshman, etc.
-    string major;
     string name;
-    int credits;
-    int credit_limit;
+    string student_id;
+    string major;
+    int year; // 1 = freshman, 2 = sophomore, 3 = junior, 4 = senior, 5 = other
+    int credits; // Amount of credits taken
+    int credit_limit; // Maximum number of credits student can take
+    vector<Course*> courses; // Current registered classes
+    vector<int> sections; // Current registered sections of courses (index corresponds to courses)
     vector<string> prev_courses;  // completed classes (pre-reqs)
 
 public:
-    Student(string& id, int& y, string& m, string& n, vector<string>& pc) : UFID(id), year(y), major(m), name(n), prev_courses(pc) {
+    Student(string& id, int& y, string& m, string& n, vector<string>& pc) : student_id(id), year(y), major(m), name(n), prev_courses(pc) {
         // Hard coded values in case want to be able to change per student
         this->credits = 0;
         this->credit_limit = 18;
     }
-    Student(string& id, int& y, string& m, string& n) : UFID(id), year(y), major(m), name(n) {
+    Student(string& id, int& y, string& m, string& n) : student_id(id), year(y), major(m), name(n) {
         this->credits = 0;
         this->credit_limit = 18;
     }
@@ -47,18 +47,18 @@ public:
         }
 
         // 2. CHECK FOR PREREQUISITES
-        for (const string& req : to_add->prerequisites) {
+        /* for (const string& req : to_add->prerequisites) {
             auto it = find(prev_courses.begin(), prev_courses.end(), req);
             if (it == prev_courses.end()) {
                 return "MISSING" + req;  // Return missing prerequisite message
             }
-        }
+        }*/
 
         // 3. CHECK FOR TIME CONFLICTS
         vector<vector<int>> new_times = to_add->allSectionTimes(section);
         vector<vector<int>> current_times;
         // Loop compares class times for all courses student is already registered in
-        for (Course* c : this->courses) {
+        /*for (Course* c : this->courses) {
             for (int i=0; i<c->sections.size(); i++) {
                 current_times = c->allSectionTimes(i);
                 for (int day=0; day<5; day++) {
@@ -71,7 +71,7 @@ public:
                     }
                 }
             }
-        }
+        }*/
         // NO time conflict found, register student
         this->courses.push_back(catalog[code]);
         this->sections.push_back(section);

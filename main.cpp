@@ -9,45 +9,48 @@
 using namespace std;
 
 map<string, Course*> parseCourseData(const string& file_name) {
-    /*# COP3530 " Data Structures and Algorithms " 3 " Amanpreet Kapoor " ~ COP3503 MAC2312 .
-    * SECTION 1
-    - 2 CAR0100 11 45 13 40
-    - 4 CAR0100 13 55 15 50*/
     ifstream text_file(file_name);
     map<string, Course*> course_output;
     if (text_file.is_open()) {
         string line;
         string indicator;
         int sections = 0;  // For parsing purposes only
+        // Parsing variables
+
+        string course_code;
+        string course_name;
+        string professor;
         int seats;
         int enrolled;
-
-        string code;
-        string name;
         int credits;
-        string professor;
         vector<string> prerequisites;
+        // Storing course variables
 
         while (getline(text_file, line)) {
             if (line.empty()) continue;
 
             stringstream ss(line);
-            ss >> indicator;
+            ss >> indicator; // Determines what case to run based off symbol
 
             if (indicator == "#") {
-                ss >> indicator;
-                code = indicator;
+                course_name = "";
+                professor = "";
+                sections = 0;
+                // Resetting variables
+
+                ss >> course_code;
                 ss >> indicator;
                 ss >> indicator;
                 while (indicator != "\"") {
-                    name += indicator;
+                    course_name += indicator;
                     ss >> indicator;
                     if (indicator != "\"") {
-                        name += " ";
+                        course_name += " ";
                     }
-                }
+                } // Storing course name
+
                 ss >> indicator;
-                credits = stoi(indicator);
+                credits = stoi(indicator); // Storing course credits
                 ss >> indicator;
                 ss >> indicator;
                 while (indicator != "\"") {
@@ -56,32 +59,40 @@ map<string, Course*> parseCourseData(const string& file_name) {
                     if (indicator != "\"") {
                         professor += " ";
                     }
-                }
+                } // Storing course professor's name
+
                 ss >> indicator;
                 ss >> indicator;
+                // cout << course_code << ", " << course_name << ", " << professor << ", " << credits << endl;
+                // cout << "Pre-reqs: ";
                 while (indicator != ".") {
+                    // cout << indicator << " ";
                     prerequisites.push_back(indicator);
                     ss >> indicator;
-                }
+                } // Checking for any prerequisites, and storing them
+                // cout << endl;
 
-                Course* temp = new Course(code, name, professor, credits, prerequisites);
-                course_output[code] = temp;
-
+                Course* temp = new Course(course_code, course_name, professor, credits, prerequisites);
+                course_output[course_code] = temp;
                 continue;
             } else if (indicator == "*") {
                 ss >> indicator;
-                ss >> indicator;
-                ss >> indicator;
+                ss >> indicator; // Section number
+                ss >> indicator; // Seats
                 seats = stoi(indicator);
-                ss >> indicator;
+                ss >> indicator; // Currently enrolled
                 enrolled = stoi(indicator);
                 sections += 1;
-                course_output[code]->addSection(seats, enrolled);
+                course_output[course_code]->addSection(seats, enrolled);
+                // cout << "- Seats: " << seats << endl;
+                // cout << "- Enrolled: " << enrolled << endl;
+                // cout << "--------- Section: " << sections << endl;
                 continue;
+                // Adds sections to each course
             } else if (indicator == "-") {
-                course_output[code]->addCourseTime(ss, sections);
+                course_output[course_code]->addCourseTime(ss, sections);
                 continue;
-            }
+            } // Adds course times with each section
         }
     }
     text_file.close();
@@ -94,33 +105,41 @@ map<string, Student*> parseStudentData(const string& file_name) {
     if (text_file.is_open()) {
         string line;
         string indicator;
+        // Parsing variables
 
-        string UFID;
-        int year;
+        string student_name;
+        string student_id;
         string major;
-        string name;
+        int student_year;
         vector<string> prev_courses;
         Student* temp;
+        // Storing course variables
 
         while(getline(text_file, line)) {
             if (line.empty()) continue;
 
             stringstream ss(line);
-            ss >> indicator;
+            ss >> indicator; // Determines what case to run based off symbol
 
             if (indicator == "#") {
-                ss >> UFID;
+                student_name = "";
+                student_id = "";
+                major = "";
+                // Resetting variables
+
+                ss >> student_id;
                 ss >> indicator;
                 ss >> indicator;
                 while (indicator != "\"") {
-                    name += indicator;
+                    student_name += indicator;
                     ss >> indicator;
                     if (indicator != "\"") {
-                        name += " ";
+                        student_name += " ";
                     }
-                }
+                } // Storing student name
+
                 ss >> indicator;
-                year = stoi(indicator);
+                student_year = stoi(indicator); // Storing student year
                 ss >> indicator;
                 ss >> indicator;
                 while (indicator != "\"") {
@@ -129,23 +148,30 @@ map<string, Student*> parseStudentData(const string& file_name) {
                     if (indicator != "\"") {
                         major += " ";
                     }
-                }
+                } // Storing student major
+                // cout << student_name << ", " << student_id << endl;
+                // cout << "- Major: " << major << endl;
+                // cout << "- Year: " << student_year << endl;
+
                 if (getline(text_file, line)) {
                     if (line.empty()) {
-                        temp = new Student(UFID, year, major, name);
-                        student_list[UFID] = temp;
-                    }
+                        temp = new Student(student_id, student_year, major, student_name);
+                        student_list[student_id] = temp;
+                    } // Creates new student object and adds it to list of students
                     else {
                         stringstream ss(line);
                         ss >> indicator;
                         ss >> indicator;
+                        // cout << "- Previous Courses: ";
                         while (indicator != ".") {
+                            // cout << indicator << " ";
                             prev_courses.push_back(indicator);
                             ss >> indicator;
                         }
-                        temp = new Student(UFID, year, major, name, prev_courses);
-                        student_list[UFID] = temp;
-                    }
+                        // cout << endl;
+                        temp = new Student(student_id, student_year, major, student_name, prev_courses);
+                        student_list[student_id] = temp;
+                    } // Creates new subject object AND adds previous courses taken (for existing students)
                 }
             }
         }
@@ -155,9 +181,8 @@ map<string, Student*> parseStudentData(const string& file_name) {
 }
 
 int main() {
-    map<string, Course*> course_catalog = parseCourseData("/Users/catherinewu/Documents/Project3/course_data.txt");
-    map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Documents/Project3/student_data.txt");
-
+    map<string, Course*> course_catalog = parseCourseData("/Users/matti/CLionProjects/careerplus/course_data.txt");
+    map<string, Student*> student_database = parseStudentData("/Users/matti/CLionProjects/careerplus/student_data.txt");
     cout << "complete" << endl;
     return 0;
 }
