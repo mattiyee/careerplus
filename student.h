@@ -34,13 +34,11 @@ public:
         this->credit_limit = 18;
     }
 
-    string getName() const {
-        return name;
-    }
-
-    string getID() const {
-        return student_id;
-    }
+    // Getters
+    string getName() const {return name;}
+    string getUserInfo() const{return name + " : " + student_id + " " + major + " : " + to_string(year);}
+    vector<Course*> getCurrentCourses() const {return courses;}
+    vector<string> getPreviousCourses() const {return prev_courses;}
 
     string Register(string& code, map<string, Course*>& catalog, int& section) {
         // Attempts to register student for section, returns message based on success or error

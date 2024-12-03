@@ -248,21 +248,23 @@ public:
                 string search_option;
                 cout << "Please select your preferred search method:\n1. ID Number\n2. Student Name" << endl;
 
-                while(true){
+                while (true){
                     getline(cin, search_option);
-                    if(search_option == "1") {
+                    if (search_option == "1") {
                         string input_id;
                         cout << "Please enter the ID of the student you'd like to search up:" << endl;
                         getline(cin, input_id);
-                        // cout << searchbyID(input_id) << endl;
-                        // TODO: Display user information
+                        if (!searchbyID(input_id)) {
+                            cout << "Student ID number " + input_id + " not found." << endl;
+                        }
                         break;
                     } else if(search_option == "2") {
                         string input_name;
                         cout << "Please enter the first and last name of the student you'd like to search up:" << endl;
                         getline(cin, input_name);
-                        // cout << searchbyName(input_name) << endl;
-                        // TODO: Display user information
+                        if(!searchbyName(input_name)) {
+                            cout << "Student " + input_name + " not found." << endl;
+                        }
                         break;
                     } else {
                         cout << "Invalid option! Please select one of the available options." << endl;
@@ -276,23 +278,49 @@ public:
         }
     }
 
-    string searchbyID(const string& input_id) {
+    bool searchbyID(const string& input_id) {
         auto it = student_database.find(input_id);
         if(it != student_database.end()) {
-            return it->second->getName();
+            printUserInfo(it->second->getUserInfo());
+            return true;
         } else {
-            return "Student ID number " + input_id + " not found.";
+            return false;
         }
     }
 
-    string searchbyName(const string& input_name) {
+    bool searchbyName(const string& input_name) {
         for (const auto& student : student_database) {
             if (student.second->getName() == input_name) {
-                return student.second->getName();
+                printUserInfo(student.second->getUserInfo());
+                return true;
             }
         }
-        return "Student " + input_name + " not found.";
+        return false;
     }
+
+    void printUserInfo(const string& parse) {
+         string temp;
+         string temp_two;
+         stringstream ss(parse);
+         while(temp != ":") {
+             temp_two += temp;
+             ss >> temp;
+             temp_two += " ";
+         }
+         cout << "--------------------\nName:" << temp_two << endl;
+         ss >> temp;
+         cout << "ID: " << temp << endl;
+         ss >> temp;
+         temp_two = "";
+         while(temp != ":") {
+             temp_two += temp;
+             ss >> temp;
+             temp_two += " ";
+         }
+         cout << "Major: " << temp_two << endl;
+         ss >> temp;
+         cout << "Year: " << temp << "\n--------------------" << endl;
+     }
 };
 
 #endif //CAREERPLUS_CLI_H
