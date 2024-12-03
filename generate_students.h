@@ -7,7 +7,7 @@
 #include <sstream>
 using namespace std;
 
-void generateStudents(int num) {
+void generateStudents(int num, const string& output_addr) {
     vector<string> first_names = {"Jacob", "Emily", "Michael", "Madison", "Joshua", "Madison", "Emma", "Matthew",
                                   "Olivia", "Hannah", "Daniel", "Christopher", "Abigail", "Andrew", "Isabella",
                                   "Ethan", "Samantha", "Joseph", "Elizabeth", "William", "Ashley", "Anthony", "Alexis",
@@ -90,6 +90,59 @@ void generateStudents(int num) {
         // Generate random major and classes based on year
         major_spread = dist_major_spread(rng);
         cs = dist_major_spread(rng);
+
+        // Engineering college gen eds
+        if (year == 1) {
+            if (cs < 70) {
+                cc.push_back("MAC2311");
+                if (cs < 40) {
+                    cc.push_back("MAC2312");
+                }
+                if (cs < 20) {
+                    cc.push_back("MAC2313");
+                }
+            }
+            if (cs < 50) {
+                cc.push_back("PHY2048");
+            }
+        } else if (year == 2) {
+            cc.push_back("MAC2311");
+            cc.push_back("MAC2312");
+            if (cs < 70) {
+                cc.push_back("MAC2313");
+                cc.push_back("PHY2048");
+                if (cs < 50) {
+                    cc.push_back("MAP2302");
+                }
+                if (cs < 40) {
+                    cc.push_back("PHY2049");
+                }
+            }
+        } else if (year == 3) {
+            cc.push_back("MAC2311");
+            cc.push_back("MAC2312");
+            cc.push_back("MAC2313");
+            cc.push_back("PHY2048");
+            cc.push_back("MAP2302");
+            if (cs < 80) {
+                cc.push_back("PHY2049");
+                if (cs < 50) {
+                    cc.push_back("STA3032");
+                }
+            }
+        } else {
+            cc.push_back("MAC2311");
+            cc.push_back("MAC2312");
+            cc.push_back("MAC2313");
+            cc.push_back("PHY2048");
+            cc.push_back("MAP2302");
+            cc.push_back("PHY2049");
+            if (cs < 80) {
+                cc.push_back("STA3032");
+            }
+        }
+
+        // Major specific critical tracking classes
         if (major_spread <= 31) {
             majors.push_back("Computer Science");
             if (year == 1) {
@@ -551,7 +604,7 @@ void generateStudents(int num) {
     }
 
     // Write to text file
-    ofstream output("/Users/catherinewu/Downloads/careerplus-main/generate_students_temp.txt");
+    ofstream output(output_addr);
     if (output.is_open()) {
         for (int i=0; i<UFIDs.size(); i++) {
             output << "# " << UFIDs[i] << " \" " << names[i] << " \" " << years[i] << " \" " << majors[i] << " \"" << endl;
