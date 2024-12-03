@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
+#include <algorithm>
 #include "Course.h"
 using namespace std;
 
@@ -32,8 +33,6 @@ public:
         this->credits = 0;
         this->credit_limit = 18;
     }
-
-
 
     string Register(string& code, map<string, Course*>& catalog, int& section) {
         // Attempts to register student for section, returns message based on success or error

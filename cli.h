@@ -1,7 +1,8 @@
 #pragma once
+#include <iostream>
+#include <map>
 #include "student.h"
 #include "Course.h"
-#include <map>
 using namespace std;
 
 #ifndef CAREERPLUS_CLI_H
@@ -197,20 +198,38 @@ public:
         parseCourseData("/Users/matti/CLionProjects/careerplus/course_data.txt");
         parseStudentData("/Users/matti/CLionProjects/careerplus/student_data.txt");
         user_year = 1;
+        bool correct = false;
         // Initializing data
 
-        cout << "Welcome to CareerPlus! As a first time student, we must first register you in our system.\nPlease enter your name: ";
-        cin >> user_name;
-        cout << "Please enter your ID number: ";
-        cin >> user_id;
-        cout << "What is your major? ";
-        cin >> user_major;
+        cout << "Welcome to CareerPlus! As a first time student, we must first register you in our system.\n" << "Please enter your name down below." << endl;
+        getline(cin, user_name);
+        while(!correct){
+            string correct_input;
+            cout << "Welcome " << user_name << "! Please enter your ID number below." << endl;
+            getline(cin, user_id);
+            cout << "What is your major? " << endl;
+            getline(cin, user_major);
+            cout << user_name << ", you entered that you are a " << user_major << " with an ID number of " << user_id << ". Is this correct? (Y/N)" << endl;
+            getline(cin, correct_input);
 
+            bool m = true;
+            while(m) {
+                if(correct_input == "Y") {correct = true; m = false; continue;}
+                else if(correct_input == "N") {
+                    cout << "I'm sorry for the misinterpretation. Please enter your name down below." << endl;
+                    getline(cin, user_name);
+                    m = false;
+                    continue;
+                }
+                else {
+                    cout << "Invalid option. Please type your answer again." << endl;
+                    getline(cin, correct_input);
+                }
+            }
+        }
         user = new Student(user_id, user_year, user_major, user_name);
         student_database[user_id] = user;
-
-        cout << "Please type down the name of a class you'd like to register for: ";
-}
+    }
 };
 
 #endif //CAREERPLUS_CLI_H

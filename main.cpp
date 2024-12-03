@@ -1,19 +1,9 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <map>
-#include "Course.h"
-#include "student.h"
+#pragma once
+#include "cli.h"
 using namespace std;
 
 int main() {
-    // map<string, Course*> course_catalog = parseCourseData("/Users/matti/CLionProjects/careerplus/course_data.txt");
-    // map<string, Student*> student_database = parseStudentData("/Users/matti/CLionProjects/careerplus/student_data.txt");
-
-
-
-
+    User newUser;
+    newUser.initializeData();
     return 0;
 }
