@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
+#include <algorithm>
 #include "Course.h"
 using namespace std;
 
@@ -32,6 +33,7 @@ public:
         this->credits = 0;
         this->credit_limit = 18;
     }
+
     string Register(string& code, map<string, Course*>& catalog, int& section) {
         // Attempts to register student for section, returns message based on success or error
         Course* to_add = catalog[code];
@@ -47,18 +49,18 @@ public:
         }
 
         // 2. CHECK FOR PREREQUISITES
-        /* for (const string& req : to_add->prerequisites) {
+        for (const string& req : to_add->prerequisites) {
             auto it = find(prev_courses.begin(), prev_courses.end(), req);
             if (it == prev_courses.end()) {
                 return "MISSING" + req;  // Return missing prerequisite message
             }
-        }*/
+        }
 
         // 3. CHECK FOR TIME CONFLICTS
         vector<vector<int>> new_times = to_add->allSectionTimes(section);
         vector<vector<int>> current_times;
         // Loop compares class times for all courses student is already registered in
-        /*for (Course* c : this->courses) {
+        for (Course* c : this->courses) {
             for (int i=0; i<c->sections.size(); i++) {
                 current_times = c->allSectionTimes(i);
                 for (int day=0; day<5; day++) {
@@ -71,7 +73,7 @@ public:
                     }
                 }
             }
-        }*/
+        }
         // NO time conflict found, register student
         this->courses.push_back(catalog[code]);
         this->sections.push_back(section);
