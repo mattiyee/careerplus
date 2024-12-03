@@ -1,0 +1,27 @@
+# 90079034 " William Howard " 3 " Industrial Engineering "
+- COT3100 COP2332C .
+
+# 10644785 " Rachel Roberts " 3 " Computer Science "
+- COP3502C COP3503C COP3530 COT3100 COP4600 COP4020 .
+
+# 64980237 " Brooke Roberts " 2 " Computer Science "
+- COP3502C COP3503C COP3530 COT3100 .
+
+# 90120378 " Mason Bennett " 3 " Computer Science "
+- COP3502C COP3503C COP3530 COT3100 .
+
+# 68765045 " Natalie Miller " 1 " Electrical Engineering "
+
+# 80725774 " Lauren Rivera " 1 " Mechanical Engineering "
+
+# 86625419 " Austin Cox " 1 " Computer Science "
+
+# 56549695 " Jordan Mitchell " 4 " Industrial Engineering "
+- COT3100 COP2332C ESI4356 ESI4523 .
+
+# 54609354 " Christian Thomas " 2 " Computer Science "
+- COP3502C .
+
+# 52412471 " Jacob Rogers " 3 " Computer Science "
+- COP3502C COP3503C COP3530 COT3100 .
+
