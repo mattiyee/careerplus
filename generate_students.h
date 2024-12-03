@@ -551,7 +551,7 @@ void generateStudents(int num) {
     }
 
     // Write to text file
-    ofstream output("/Users/catherinewu/Downloads/careerplus-main/generate_students.txt");
+    ofstream output("/Users/catherinewu/Downloads/careerplus-main/generate_students_temp.txt");
     if (output.is_open()) {
         for (int i=0; i<UFIDs.size(); i++) {
             output << "# " << UFIDs[i] << " \" " << names[i] << " \" " << years[i] << " \" " << majors[i] << " \"" << endl;

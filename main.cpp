@@ -183,7 +183,7 @@ map<string, Student*> parseStudentData(const string& file_name) {
 }
 
 int main() {
-    generateStudents(10);
+    // generateStudents(100000);
 
     map<string, Course*> course_catalog = parseCourseData("/Users/catherinewu/Downloads/careerplus-main/course_data.txt");
     map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Downloads/careerplus-main/generate_students.txt");
