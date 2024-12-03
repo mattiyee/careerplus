@@ -7,6 +7,7 @@
 #include "Course.h"
 #include "student.h"
 #include "generate_students.h"
+#include "cli.h"
 using namespace std;
 
 map<string, Course*> parseCourseData(const string& file_name) {
@@ -184,9 +185,12 @@ map<string, Student*> parseStudentData(const string& file_name) {
 
 int main() {
     // generateStudents(100000);
+    // map<string, Course*> course_catalog = parseCourseData("/Users/catherinewu/Downloads/careerplus-main/course_data.txt");
+    // map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Downloads/careerplus-main/generate_students.txt");
+    // cout << "complete" << endl;
 
-    map<string, Course*> course_catalog = parseCourseData("/Users/catherinewu/Downloads/careerplus-main/course_data.txt");
-    map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Downloads/careerplus-main/generate_students.txt");
-    cout << "complete" << endl;
+    User new_user;
+    new_user.initializeData();
+    new_user.mainMenu();
     return 0;
 }

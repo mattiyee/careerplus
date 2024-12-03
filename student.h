@@ -34,6 +34,14 @@ public:
         this->credit_limit = 18;
     }
 
+    string getName() const {
+        return name;
+    }
+
+    string getID() const {
+        return student_id;
+    }
+
     string Register(string& code, map<string, Course*>& catalog, int& section) {
         // Attempts to register student for section, returns message based on success or error
         Course* to_add = catalog[code];

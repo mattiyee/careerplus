@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <map>
+#include <stdexcept>
 #include "student.h"
 #include "Course.h"
 using namespace std;
@@ -24,7 +25,7 @@ private:
     map<string, Student*> student_database; // Data of all students after parsing data
 
 public:
-    map<string, Course*> parseCourseData(const string& file_name) {
+     map<string, Course*> parseCourseData(const string& file_name) {
         ifstream text_file(file_name);
         if (text_file.is_open()) {
             string line;
@@ -229,6 +230,68 @@ public:
         }
         user = new Student(user_id, user_year, user_major, user_name);
         student_database[user_id] = user;
+    }
+
+    void mainMenu(){
+        // parseStudentData("/Users/matti/CLionProjects/careerplus/student_data.txt");
+        cout << "Thank you for registering for CareerPlus!\nWhat would you like to do next? (Please select an option below.)" << endl;
+        while(true) {
+            string selected_option;
+            cout << "1. View current schedule\n2. Register for a course\n3. Search for a student\n4. Exit" << endl;
+            getline(cin, selected_option);
+
+            if(selected_option == "1") {
+                // TODO: View current schedule code
+            } else if(selected_option == "2") {
+                // TODO: Registering for a course code
+            } else if(selected_option == "3") {
+                string search_option;
+                cout << "Please select your preferred search method:\n1. ID Number\n2. Student Name" << endl;
+
+                while(true){
+                    getline(cin, search_option);
+                    if(search_option == "1") {
+                        string input_id;
+                        cout << "Please enter the ID of the student you'd like to search up:" << endl;
+                        getline(cin, input_id);
+                        // cout << searchbyID(input_id) << endl;
+                        // TODO: Display user information
+                        break;
+                    } else if(search_option == "2") {
+                        string input_name;
+                        cout << "Please enter the first and last name of the student you'd like to search up:" << endl;
+                        getline(cin, input_name);
+                        // cout << searchbyName(input_name) << endl;
+                        // TODO: Display user information
+                        break;
+                    } else {
+                        cout << "Invalid option! Please select one of the available options." << endl;
+                        continue;
+                    }
+                }
+            } else if(selected_option == "4") {
+                cout << "Thank you for using CareerPlus! Have a great day!" << endl;
+                break;
+            }
+        }
+    }
+
+    string searchbyID(const string& input_id) {
+        auto it = student_database.find(input_id);
+        if(it != student_database.end()) {
+            return it->second->getName();
+        } else {
+            return "Student ID number " + input_id + " not found.";
+        }
+    }
+
+    string searchbyName(const string& input_name) {
+        for (const auto& student : student_database) {
+            if (student.second->getName() == input_name) {
+                return student.second->getName();
+            }
+        }
+        return "Student " + input_name + " not found.";
     }
 };
 
