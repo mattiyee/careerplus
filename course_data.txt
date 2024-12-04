@@ -481,7 +481,7 @@
 - 5 LIT237 4 .
 * SECTION 2 250 0
 - 1 LIT237 6 .
-- 3 LIT237 6.
+- 3 LIT237 6 .
 - 5 LIT237 6 .
 
 # COP4020 " Programming Language Concepts " 3 " William Anderson " ~ COP3530 .
