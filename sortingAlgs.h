@@ -122,37 +122,28 @@ void measureAndSort(vector<string>& courseCodes){
     mergeSort(coursesMergeSort, 0, coursesMergeSort.size() - 1);
     auto endMergeSort = chrono::high_resolution_clock::now();
 
-    cout << "After Merge Sort: " << endl;
-    printCodes(coursesMergeSort);
-
     //calculate the elapsed time for merge sort
     auto mergeSortDuration = chrono::duration_cast<chrono::microseconds>(endMergeSort - startMergeSort);
-    cout << "Merge Sort Time: " << mergeSortDuration.count() << " microseconds" << endl << endl;
 
     //measure time for quick sort
     auto startQuickSort = chrono::high_resolution_clock::now();
     mergeSort(coursesQuickSort, 0, coursesQuickSort.size() - 1);
     auto endQuickSort = chrono::high_resolution_clock::now();
 
-    cout << "After Quick Sort: " << endl;
-    printCodes(coursesQuickSort);
-
     //calculate the elapsed time for merge sort
     auto quickSortDuration = chrono::duration_cast<chrono::microseconds>(endQuickSort - startQuickSort);
-    cout << "Quick Sort Time: " << quickSortDuration.count() << " microseconds" << endl;
+    string fasterSortingAlg;
 
-
-
-
-//    auto start = chrono::high_resolution_clock::now();
-//    sortFunction(courseCodes, 0, courseCodes.size() -1);
-//    auto end = chrono::high_resolution_clock::now();
-//
-//    auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
-//
-//    printCodes(courseCodes);
-//
-//    cout << sortingAlg << " time: " << duration.count() << " microseconds" << endl;
+    if(quickSortDuration > mergeSortDuration){
+        printCodes(coursesQuickSort);
+        fasterSortingAlg = "Quick Sort";
+        cout << endl << "Sorted in " << quickSortDuration.count() << " ms using " << fasterSortingAlg << endl;
+    }
+    else if(quickSortDuration > mergeSortDuration){
+        printCodes(coursesMergeSort);
+        fasterSortingAlg = "Merge Sort";
+        cout << endl << "Sorted in " << mergeSortDuration.count() << " ms using " << fasterSortingAlg << endl;
+    }
 
 }
 
