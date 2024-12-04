@@ -21,7 +21,7 @@ int main() {
     // map<string, Course*> course_catalog = parseCourseData("/Users/catherinewu/Downloads/careerplus-main/course_data.txt");
     // map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Downloads/careerplus-main/generate_students.txt");
 
-    // User new_user;
+    User new_user;
     // new_user.initializeData("/Users/catherinewu/Downloads/careerplus-main/course_data.txt", "/Users/catherinewu/Downloads/careerplus-main/student_data.txt");
     // new_user.mainMenu();
 

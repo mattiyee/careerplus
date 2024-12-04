@@ -119,6 +119,7 @@ public:
 
         return "Enroll " + code + ": SUCCESS";  // Return success message
     }
+
     string Unenroll(const string code, map<string, Course*>& catalog) {
         for (int i = 0; i < this->courses.size(); i++) {
             if (this->courses[i]->code == code) {
@@ -136,6 +137,7 @@ public:
         }
         return "Unenroll " + code + ": ERROR (Student not currently enrolled in course)";
     }
+
     int currentCredits() {
         return this->credits;
     }

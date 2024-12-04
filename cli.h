@@ -16,6 +16,7 @@ private:
     Student* user; // User data
     unordered_map<string, Course*> course_output; // Data of all courses after parsing data
     map<string, Student*> student_list; // Data of all students after parsing data
+    vector<string> major_list; // List of all available majors
 
 public:
     unordered_map<string, Course*> parseCourseData(const string& file_name) {
@@ -96,7 +97,6 @@ public:
                             ss >> indicator;
                         } else {
                             major = major + indicator;
-
                             ss >> indicator;
                             if (indicator != "," and indicator != ".") {
                                 major = major + " ";
@@ -213,9 +213,16 @@ public:
         }
     }
 
+    vector<string> obtainMajors() {
+        return major_list = {"Computer Science", "Computer Engineering", "Electrical Engineering", "Mechanical Engineering", "Biomedical Engineering",
+                             "Biological/Agricultural Engineering", "Civil Engineering", "Industrial Engineering", "Aerospace Engineering", "Materials Science",
+                             "Chemical Engineering", "Nuclear Engineering", "Digital Arts and Sciences"};
+    }
+
     void initializeData(const string& course_file_name, const string& student_file_name) {
         parseCourseData(course_file_name);
         parseStudentData(student_file_name);
+        obtainMajors();
         cout << "Parsing successfully complete." << endl << endl;
         string user_name;
         string user_id;
@@ -263,6 +270,10 @@ public:
                     if (!isalpha(c) && c != ' ') {
                         valid = false;
                     }
+                }
+                auto it = find(major_list.begin(), major_list.end(), user_major);
+                if(it == major_list.end()) {
+                    valid = false;
                 }
                 if (valid) {check = true;}
                 else {cout << "Invalid major type! Please check you spelt your major correctly." << endl;}
@@ -322,7 +333,7 @@ public:
                     cout << "Here are the available sections for " << input_course << ". Please type the number of the section you wish to enroll in." << endl;
                     selected->displaySections();
                     getline(cin, input_section);
-                    user->Register(input_course, course_output, stoi(input_section));
+                    cout << user->Register(input_course, course_output, stoi(input_section)) << endl;
                 } else {
                     cout << "Course code " << input_course << " cannot be found. Returning to Main Menu..." << endl;
                 }
