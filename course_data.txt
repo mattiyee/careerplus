@@ -498,3 +498,191 @@
 - 2 CAR100 10 .
 - 4 CAR100 10 11 .
 - 3 WEIM1084 7 .
+
+# EGM3520 " Mechanics of Materials " 3 " Peeter Ifju " ~ EGM2511 and MAC2313 .
+@ Bio/Ag Engineering, Civil Engineering, Aerospace Engineering .
+* SECTION 1 250 0
+- 1 WEIL270 7 .
+- 3 WEIL270 7 .
+- 5 WEIL270 7 .
+* SECTION 2 250 0
+- 1 WEIL270 8 .
+- 3 WEIL270 8 .
+- 5 WEIL270 8 .
+* SECTION 3 250 0
+- 1 WEIL270 9 .
+- 3 WEIL270 9 .
+- 5 WEIL270 9 .
+* SECTION 4 250 0
+- 1 WEIL270 10 .
+- 3 WEIL270 10 .
+- 5 WEIL270 10 .
+
+# ABE3000C " Applications in Biological Engineering " 3 " Melanie Correll " ~ BSC2010 .
+@ Bio/Ag Engineering .
+* SECTION 1 250 0
+- 1 WEIL270 4 .
+- 3 WEIL270 4 .
+- 5 WEIL270 4 .
+- 3 ROG129 5 7 . 
+* SECTION 2 250 0
+- 1 WEIL270 4 .
+- 3 WEIL270 4 .
+- 5 WEIL270 4 .
+- 5 ROG129 5 6 . 
+* SECTION 3 250 0
+- 1 WEIL270 4 .
+- 3 WEIL270 4 .
+- 5 WEIL270 4 .
+- 5 ROG129 6 7 . 
+
+# ABE4042C " Biological Engineering Design 1 " 2 " Ziynet Boz " ~ ABE2012C .
+@ Bio/Ag Engineering .
+* SECTION 1 250 0
+- 5 WEIL270 7 8 .
+- 3 ROG129 7 . 
+* SECTION 2 250 0
+- 5 WEIL270 7 8 .
+- 3 ROG129 8 .
+
+# ENC3246 " Professional Communication for Engineers " 3 " Patrick Scanlon " .
+@ Any .
+* SECTION 1 250 0
+- 1 TUR2306 6 .
+- 3 TUR2306 6 .
+- 5 TUR2306 6 .
+* SECTION 2 250 0
+- 1 TUR2306 8 .
+- 3 TUR2306 8 .
+- 5 TUR2306 8 .
+* SECTION 3 250 0
+- 1 TUR2306 2 .
+- 3 TUR2306 2 .
+- 5 TUR2306 2 .
+* SECTION 4 250 0
+- 1 TUR2306 3 .
+- 3 TUR2306 3 .
+- 5 TUR2306 3 .
+* SECTION 5 250 0
+- 1 TUR2306 4 .
+- 3 TUR2306 4 .
+- 5 TUR2306 4 .
+
+# BME3508 " Biosignals and Systems " 3 " Scott Seigel " ~ EEL3111C MAC2313 .
+@ Biomedical Engineering .
+* SECTION 1 250 0
+- 1 TUR2306 7 .
+- 3 TUR2306 7 .
+- 5 TUR2306 7 .
+* SECTION 2 250 0
+- 1 TUR2306 8 .
+- 3 TUR2306 8 .
+- 5 TUR2306 8 .
+
+# BME3060 " Biomedical Fundamentals " 3 " Chris Geiger " ~ CHM2046 MAC2313 .
+@ Biomedical Engineering .
+* SECTION 1 250 0
+- 2 CAR100 8 9.
+- 4 CAR100 9 .
+* SECTION 2 250 0
+- 2 CAR100 8 9.
+- 4 CAR100 9 .
+
+# BME4531 " Medical Imaging " 3 " Kuang Gong " ~ MAC2313 MAP2302 PHY2049 BME3503C BME3508 .
+@ Biomedical Engineering .
+* SECTION 1 250 0
+- 2 CAR100 4.
+- 4 CAR100 4 5 .
+* SECTION 2 250 0
+- 2 CAR100 4 .
+- 4 CAR100 4 5 .
+
+# ECH3023 " Material and Energy Balances " 4 " Richard Dickinson " ~ CHM2045 MAC2312 PHY2048 .
+@ Chemical Engineering .
+* SECTION 1 250 0
+- 1 TUR2306 6 .
+- 3 TUR2306 6 .
+- 5 TUR2306 6 .
+- 4 HPNPG316 6.
+* SECTION 2 250 0
+- 1 TUR2306 8 .
+- 3 TUR2306 8 .
+- 5 TUR2306 8 .
+- 4 HPNPG316 6.
+
+# ECH4714 " Chemical Process Safety " 3 " Vincent Tocco " ~ ECH3101 ECH3203 ECH3223 .
+@ Chemical Engineering .
+* SECTION 1 250 0
+- 1 TUR2306 9 .
+- 3 TUR2306 9 .
+- 5 TUR2306 9 .
+* SECTION 2 250 0
+- 1 TUR2306 9 .
+- 3 TUR2306 9 .
+- 5 TUR2306 9 .
+
+# ECH4504 " Chemical Kinetics and Reactor Design " 4 " Spyros Svoronos " ~ ECH3246 ECH4123 .
+@ Chemical Engineering .
+* SECTION 1 250 0
+- 2 CAR100 6 7.
+- 4 CAR100 6 7 .
+* SECTION 2 250 0
+- 2 CAR100 8 9 .
+- 4 CAR100 8 9 .
+
+# BME4311 " Molecular Biomedical Engineering " 3 " Markia Bowe " ~ BSC2010 CHM2210 PCB3713C .
+@ Biomedical Engineering .
+* SECTION 1 250 0
+- 1 TUR2306 5 .
+- 3 TUR2306 5 .
+- 5 TUR2306 5 .
+* SECTION 2 250 0
+- 1 TUR2306 9 .
+- 3 TUR2306 9 .
+- 5 TUR2306 9 .
+
+# CWR3201 " Hydronamics " 4 " Mark Newman " ~ MAP2302 EGM2511 .
+@ Civil Engineering .
+* SECTION 1 250 0
+- 2 TUR2306 5 6 .
+- 4 TUR2306 5 6 .
+- 3 TUR2306 8 9 .
+* SECTION 2 250 0
+- 2 TUR2306 5 6 .
+- 4 TUR2306 5 6 .
+- 3 TUR2306 8 9 .
+* SECTION 3 250 0
+- 2 TUR2306 5 6 .
+- 4 TUR2306 5 6 .
+- 3 TUR2306 8 9 .
+* SECTION 4 250 0
+- 2 TUR2306 5 6 .
+- 4 TUR2306 5 6 .
+- 3 TUR2306 8 9 .
+
+# CGN4806 " Transportation-Water-Materials Design " 3 " Shirish Bhat " .
+@ Civil Engineering .
+* SECTION 1 250 0
+- 1 TUR2306 8 10 .
+* SECTION 2 250 0
+- 1 TUR2306 8 10 .
+
+# ESI4523 " Industrial Systems Simulation " 3 " Xiang Zhong " ~ COP2271 ESI3215C.
+@ Industrial Engineering .
+* SECTION 1 250 0
+- 1 LIT237 2 .
+- 3 LIT237 2 .
+- 5 LIT237 2 .
+* SECTION 2 250 0
+- 1 LIT237 2 .
+- 3 LIT237 2 .
+- 5 LIT237 2 .
+
+# ESI4356 " Decision Support Systems for Industrial and Systems Engineers " 4 " Katie Basinger-Ellis " ~ COP2271 .
+@ Industrial Engineering .
+* SECTION 1 250 0
+- 2 CAR100 2 3.
+- 4 CAR100 2 3 .
+* SECTION 2 250 0
+- 2 CAR100 2 3 .
+- 4 CAR100 2 3 .
