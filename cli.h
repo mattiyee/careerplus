@@ -25,7 +25,7 @@ private:
     map<string, Student*> student_database; // Data of all students after parsing data
 
 public:
-     map<string, Course*> parseCourseData(const string& file_name) {
+    map<string, Course*> parseCourseData(const string& file_name) {
         ifstream text_file(file_name);
         if (text_file.is_open()) {
             string line;
@@ -114,7 +114,6 @@ public:
         text_file.close();
         return course_catalog;
     }
-
     map<string, Student*> parseStudentData(const string& file_name) {
         ifstream text_file(file_name);
         if (text_file.is_open()) {
@@ -233,7 +232,6 @@ public:
     }
 
     void mainMenu(){
-        // parseStudentData("/Users/matti/CLionProjects/careerplus/student_data.txt");
         cout << "Thank you for registering for CareerPlus!\nWhat would you like to do next? (Please select an option below.)" << endl;
         while(true) {
             string selected_option;
@@ -241,9 +239,34 @@ public:
             getline(cin, selected_option);
 
             if(selected_option == "1") {
-                // TODO: View current schedule code
-            } else if(selected_option == "2") {
-                // TODO: Registering for a course code
+                if (user_courses.size() == 0) {
+                    cout << "You are not registered in any courses!" << endl;
+                } else {
+                    cout << "These are your registered courses:\n--------------------" << endl;
+                    for (const auto& course : user_courses) {
+                        if (course) {
+                            cout << "Course: " << course->code << ": " << course->name << endl;
+                            cout << "Professor: " << course->professor << endl;
+                            // TODO: Add display for sections
+                        }
+                    }
+                }
+            } else if (selected_option == "2") {
+                string input_course;
+                cout << "Please enter the code of the course you would like to register for." << endl;
+                getline(cin, input_course);
+
+                auto it = course_catalog.find(input_course);
+                if (it != course_catalog.end()) {
+                    Course* selected = it->second;
+                    cout << "Here are the available sections for " << input_course << ". Please pick a section." << endl;
+                    selected->displaySections();
+                    // TODO: Register section
+                } else {
+                    cout << "Course code " << input_course << " cannot be found. Returning to Main Menu..." << endl;
+                }
+
+
             } else if(selected_option == "3") {
                 string search_option;
                 cout << "Please select your preferred search method:\n1. ID Number\n2. Student Name" << endl;
