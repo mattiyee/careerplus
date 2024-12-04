@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <map>
+#include <unordered_map>
 #include <stdexcept>
 #include "student.h"
 #include "Course.h"
@@ -22,7 +23,7 @@ private:
     vector<int> user_sections; // Current registered sections of courses (index corresponds to courses)
     vector<string> user_prev;  // completed classes (pre-reqs)
     Student* user; // User data
-    map<string, Course*> course_catalog; // Data of all courses after parsing data
+    unordered_map<string, Course*> course_catalog; // Data of all courses after parsing data
     map<string, Student*> student_database; // Data of all students after parsing data
 
 public:
@@ -126,9 +127,12 @@ public:
                 }
             } else if(selected_option == "4"){
                 cout << "Here is list of all the course codes, sorted in alphabetical order!\n" << endl;
-                //measureAndSort()
+                vector<string> courseCodes;
+                for(const auto& cc: course_catalog){
+                    courseCodes.push_back(cc.first);
+                }
+                measureAndSort(courseCodes);
             }
-
             else if(selected_option == "5") {
                 cout << "Thank you for using CareerPlus! Have a great day!" << endl;
                 break;
