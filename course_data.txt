@@ -1,4 +1,7 @@
 # COP3530 " Data Structures and Algorithms " 3 " Amanpreet Kapoor " ~ COP3503 MAP2312 .
+@ Computer Science , Digital Arts and Sciences, Computer Engineering .
+* SECTION 1 150 0
+- 2 CAR0100 5 6 .
 @ Computer Science , Digital Arts and Sciences, Computer Engineering
 * SECTION 1 250 0
 - 2 CAR0100 6 .

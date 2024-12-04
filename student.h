@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
+#include <algorithm>
 #include "course.h"
 using namespace std;
 
@@ -31,6 +32,12 @@ public:
     Student(string& id, int& y, string& m, string& n) : student_id(id), year(y), major(m), name(n) {
         this->credits = 0;
         this->credit_limit = 18;
+    }
+    string getName() const {
+        return name;
+    }
+    string getUserInfo() const {
+        return name + " : " + student_id + major + " : " + to_string(year);
     }
     string Register(const string code, map<string, Course*>& catalog, const int section) {
         if (catalog.count(code) != 1) {
@@ -98,7 +105,7 @@ public:
         this->courses.push_back(catalog[code]);
         this->sections.push_back(section);
         this->credits += catalog[code]->credits;
-        catalog[code]->sections[section]->Enroll(this->student_id);
+        catalog[code]->sections[section]->enrolled_IDs.insert(this->student_id);
 
         return "Enroll " + code + ": SUCCESS";  // Return success message
     }
