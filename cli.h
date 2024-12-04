@@ -13,40 +13,268 @@ using namespace std;
 
 class User {
 private:
-    string user_name;
-    string user_id;
-    string user_major;
-    int user_year; // 1 = freshman, 2 = sophomore, 3 = junior, 4 = senior, 5 = other
-    int user_credits; // Amount of credits taken
-    int user_limit; // Maximum number of credits student can take
-    vector<Course*> user_courses; // Current registered classes
-    vector<int> user_sections; // Current registered sections of courses (index corresponds to courses)
-    vector<string> user_prev;  // completed classes (pre-reqs)
     Student* user; // User data
-    unordered_map<string, Course*> course_catalog; // Data of all courses after parsing data
-    map<string, Student*> student_database; // Data of all students after parsing data
+    unordered_map<string, Course*> course_output; // Data of all courses after parsing data
+    map<string, Student*> student_list; // Data of all students after parsing data
 
 public:
+    unordered_map<string, Course*> parseCourseData(const string& file_name) {
+        ifstream text_file(file_name);
+        if (text_file.is_open()) {
+            string line;
+            string indicator;
+            int sections = 0;  // For parsing purposes only
+            // Parsing variables
+
+            string course_code;
+            string course_name;
+            string professor;
+            string major;
+            int seats;
+            int enrolled;
+            int credits;
+            vector<string> prerequisites;
+            vector<string> majors;
+            // Storing course variables
+
+            while (getline(text_file, line)) {
+                if (line.empty()) continue;
+
+                stringstream ss(line);
+                ss >> indicator; // Determines what case to run based off symbol
+
+                if (indicator == "#") {
+                    course_name = "";
+                    professor = "";
+                    major = "";
+                    sections = 0;
+                    // Resetting variables
+
+                    ss >> course_code;
+                    ss >> indicator;
+                    ss >> indicator;
+                    while (indicator != "\"") {
+                        course_name += indicator;
+                        ss >> indicator;
+                        if (indicator != "\"") {
+                            course_name += " ";
+                        }
+                    } // Storing course name
+
+                    ss >> indicator;
+                    credits = stoi(indicator); // Storing course credits
+                    ss >> indicator;
+                    ss >> indicator;
+                    while (indicator != "\"") {
+                        professor += indicator;
+                        ss >> indicator;
+                        if (indicator != "\"") {
+                            professor += " ";
+                        }
+                    } // Storing course professor's name
+
+                    ss >> indicator;
+                    ss >> indicator;
+
+                    while (indicator != ".") {
+                        prerequisites.push_back(indicator);
+                        ss >> indicator;
+                    } // Checking for any prerequisites, and storing them
+
+                    Course* temp = new Course(course_code, course_name, professor, credits, prerequisites);
+                    course_output[course_code] = temp;
+                    prerequisites.clear();
+                    continue;
+                }
+                else if (indicator == "@") {
+                    ss >> indicator;  // major(s) specific to course (if any)
+                    while (indicator != ".") {
+                        if (indicator == ",") {
+                            majors.push_back(major);
+                            major = "";
+
+                            ss >> indicator;
+                        } else {
+                            major = major + indicator;
+
+                            ss >> indicator;
+                            if (indicator != "," and indicator != ".") {
+                                major = major + " ";
+                            }
+                        }
+                    }
+                    majors.push_back(major);
+                    major = "";
+                    course_output[course_code]->addMajors(majors);
+                    majors.clear();
+                }
+                else if (indicator == "*") {
+                    ss >> indicator;
+                    ss >> indicator; // Section number
+                    ss >> indicator; // Seats
+                    seats = stoi(indicator);
+                    ss >> indicator; // Currently enrolled
+                    enrolled = stoi(indicator);
+                    sections += 1;
+                    course_output[course_code]->addSection(seats, enrolled);
+                    // cout << "- Seats: " << seats << endl;
+                    // cout << "- Enrolled: " << enrolled << endl;
+                    // cout << "--------- Section: " << sections << endl;
+                    continue;
+                    // Adds sections to each course
+                } else if (indicator == "-") {
+                    course_output[course_code]->addCourseTime(ss, sections);
+                    continue;
+                } // Adds course times with each section
+            }
+        }
+        text_file.close();
+        return course_output;
+    }
+
+    map<string, Student*> parseStudentData(const string& file_name) {
+        ifstream text_file(file_name);
+        if (text_file.is_open()) {
+            string line;
+            string indicator;
+            // Parsing variables
+
+            string student_name;
+            string student_id;
+            string major;
+            int student_year;
+            vector<string> prev_courses;
+            Student* temp;
+            // Storing course variables
+
+            while(getline(text_file, line)) {
+                if (line.empty()) continue;
+
+                stringstream ss(line);
+                ss >> indicator; // Determines what case to run based off symbol
+
+                if (indicator == "#") {
+                    student_name = "";
+                    student_id = "";
+                    major = "";
+                    // Resetting variables
+
+                    ss >> student_id;
+                    ss >> indicator;
+                    ss >> indicator;
+                    while (indicator != "\"") {
+                        student_name += indicator;
+                        ss >> indicator;
+                        if (indicator != "\"") {
+                            student_name += " ";
+                        }
+                    } // Storing student name
+
+                    ss >> indicator;
+                    student_year = stoi(indicator); // Storing student year
+                    ss >> indicator;
+                    ss >> indicator;
+                    while (indicator != "\"") {
+                        major += indicator;
+                        ss >> indicator;
+                        if (indicator != "\"") {
+                            major += " ";
+                        }
+                    } // Storing student major
+                    // cout << student_name << ", " << student_id << endl;
+                    // cout << "- Major: " << major << endl;
+                    // cout << "- Year: " << student_year << endl;
+
+                    if (getline(text_file, line)) {
+                        if (line.empty()) {
+                            temp = new Student(student_id, student_year, major, student_name);
+                            student_list[student_id] = temp;
+                        } // Creates new student object and adds it to list of students
+                        else {
+                            stringstream ss(line);
+                            ss >> indicator;
+                            ss >> indicator;
+                            // cout << "- Previous Courses: ";
+                            while (indicator != ".") {
+                                // cout << indicator << " ";
+                                prev_courses.push_back(indicator);
+                                ss >> indicator;
+                            }
+                            // cout << endl;
+                            temp = new Student(student_id, student_year, major, student_name, prev_courses);
+                            student_list[student_id] = temp;
+                            prev_courses.clear();
+                        } // Creates new subject object AND adds previous courses taken (for existing students)
+                    }
+                }
+            }
+            text_file.close();
+            return student_list;
+        }
+    }
+
     void initializeData() {
-        user_year = 1;
+        parseCourseData("/Users/matti/CLionProjects/careerplus/course_data.txt");
+        parseStudentData("/Users/matti/CLionProjects/careerplus/generate_students.txt");
+        cout << "Parsing successfully complete." << endl << endl;
+        string user_name;
+        string user_id;
+        string user_major;
+        int user_year = 1; // 1 = freshman, 2 = sophomore, 3 = junior, 4 = senior, 5 = other
         bool correct = false;
+        bool check = false;
         // Initializing data
 
         cout << "Welcome to CareerPlus! As a first time student, we must first register you in our system.\n" << "Please enter your name down below." << endl;
-        getline(cin, user_name);
-        while(!correct){
+        while (!correct) {
             string correct_input;
+            while (!check) {
+                getline(cin, user_name);
+                bool valid = true;
+                for (char a : user_name) {
+                    if (!isalpha(a) && a != ' ') {
+                        valid = false;
+                    }
+                }
+                if (valid) {check = true;}
+                else {cout << "Invalid name type! Name must consist of letters. Please try again." << endl;}
+            }
+            check = false;
             cout << "Welcome " << user_name << "! Please enter your ID number below." << endl;
-            getline(cin, user_id);
+            while (!check) {
+                getline(cin, user_id);
+                bool valid = true;
+                if(user_id.size() == 8){
+                    for (char b : user_id) {
+                        if (!isdigit(b)) {
+                            valid = false;
+                        }
+                    }
+                } else {valid = false;}
+                if (valid) {check = true;}
+                else {cout << "Invalid ID type! ID must consist of numbers and must be eight digits long. Please try again." << endl;}
+            }
+            check = false;
             cout << "What is your major? " << endl;
-            getline(cin, user_major);
+            while (!check) {
+                getline(cin, user_major);
+                bool valid = true;
+                for (char c : user_major) {
+                    if (!isalpha(c) && c != ' ') {
+                        valid = false;
+                    }
+                }
+                if (valid) {check = true;}
+                else {cout << "Invalid major type! Please check you spelt your major correctly." << endl;}
+            }
+            // TODO: Compare major input with list of majors
             cout << user_name << ", you entered that you are a " << user_major << " with an ID number of " << user_id << ". Is this correct? (Y/N)" << endl;
             getline(cin, correct_input);
 
             bool m = true;
             while(m) {
-                if(correct_input == "Y" or correct_input == "y") {correct = true; m = false; continue;}
-                else if(correct_input == "N" or correct_input == "n") {
+                if(correct_input == "Y" || correct_input == "y") {correct = true; m = false; continue;}
+                else if(correct_input == "N" || correct_input == "n") {
                     cout << "I'm sorry for the misinterpretation. Please enter your name down below." << endl;
                     getline(cin, user_name);
                     m = false;
@@ -59,7 +287,7 @@ public:
             }
         }
         user = new Student(user_id, user_year, user_major, user_name);
-        student_database[user_id] = user;
+        student_list[user_id] = user;
     }
 
     void mainMenu(){
@@ -70,34 +298,34 @@ public:
             getline(cin, selected_option);
 
             if(selected_option == "1") {
-                if (user_courses.size() == 0) {
+                if (user->getCourses().size() == 0) {
                     cout << "You are not registered in any courses!" << endl;
                 } else {
                     cout << "These are your registered courses:\n--------------------" << endl;
-                    for (const auto& course : user_courses) {
+                    for (const auto& course : user->getCourses()) {
                         if (course) {
                             cout << "Course: " << course->code << ": " << course->name << endl;
                             cout << "Professor: " << course->professor << endl;
-                            // TODO: Add display for sections
+                            // TODO: Display sections
                         }
                     }
                 }
             } else if (selected_option == "2") {
                 string input_course;
-                cout << "Please enter the code of the course you would like to register for." << endl;
+                cout << "Please enter the code of the course you would like to enroll in." << endl;
                 getline(cin, input_course);
 
-                auto it = course_catalog.find(input_course);
-                if (it != course_catalog.end()) {
+                auto it = course_output.find(input_course);
+                if (it != course_output.end()) {
+                    string input_section;
                     Course* selected = it->second;
-                    cout << "Here are the available sections for " << input_course << ". Please pick a section." << endl;
+                    cout << "Here are the available sections for " << input_course << ". Please type the number of the section you wish to enroll in." << endl;
                     selected->displaySections();
-                    // TODO: Register section
+                    getline(cin, input_section);
+                    user->Register(input_course, course_output, stoi(input_section));
                 } else {
                     cout << "Course code " << input_course << " cannot be found. Returning to Main Menu..." << endl;
                 }
-
-
             } else if(selected_option == "3") {
                 string search_option;
                 cout << "Please select your preferred search method:\n1. ID Number\n2. Student Name" << endl;
@@ -128,7 +356,7 @@ public:
             } else if(selected_option == "4"){
                 cout << "Here is list of all the course codes, sorted in alphabetical order!\n" << endl;
                 vector<string> courseCodes;
-                for(const auto& cc: course_catalog){
+                for(const auto& cc: course_output){
                     courseCodes.push_back(cc.first);
                 }
                 measureAndSort(courseCodes);
@@ -141,8 +369,9 @@ public:
     }
 
     bool searchbyID(const string& input_id) {
-        auto it = student_database.find(input_id);
-        if(it != student_database.end()) {
+        auto it = student_list.find(input_id);
+        if(it != student_list.end()) {
+            cout << "found" << endl;
             printUserInfo(it->second->getUserInfo());
             return true;
         } else {
@@ -151,7 +380,7 @@ public:
     }
 
     bool searchbyName(const string& input_name) {
-        for (const auto& student : student_database) {
+        for (const auto& student : student_list) {
             if (student.second->getName() == input_name) {
                 printUserInfo(student.second->getUserInfo());
                 return true;
@@ -172,6 +401,7 @@ public:
          cout << "--------------------\nName:" << temp_two << endl;
          ss >> temp;
          cout << "ID: " << temp << endl;
+         ss >> temp;
          ss >> temp;
          temp_two = "";
          while(temp != ":") {

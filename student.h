@@ -5,6 +5,7 @@
 #include <sstream>
 #include <fstream>
 #include <algorithm>
+#include <unordered_map>
 #include "course.h"
 using namespace std;
 
@@ -37,9 +38,18 @@ public:
         return name;
     }
     string getUserInfo() const {
-        return name + " : " + student_id + major + " : " + to_string(year);
+        return name + " : " + student_id + " : " + major + " : " + to_string(year);
     }
-    string Register(const string code, map<string, Course*>& catalog, const int section) {
+    vector<Course*> getCourses() {
+        return courses;
+    }
+    vector<int> getSections() {
+        return sections;
+    }
+    vector<string> getPrevious() {
+        return prev_courses;
+    }
+    string Register(const string code, unordered_map<string, Course*>& catalog, const int section) {
         if (catalog.count(code) != 1) {
             return "Enroll " + code + ": ERROR (Invalid class code)";  // Class not found in catalog
         }
