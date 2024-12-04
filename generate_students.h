@@ -451,7 +451,7 @@ void generateStudents(int num, const string& output_addr) {
                 }
             }
         } else if (major_spread <= 91) {
-            majors.push_back("Material Science");
+            majors.push_back("Materials Science");
             if (year == 1) {
                 if (cs < 40) {
                     cc.push_back("CHM2045");
@@ -618,7 +618,9 @@ void generateStudents(int num, const string& output_addr) {
             output << endl;
         }
         output.close();
+        return;
     } else {
         cout << "Problem creating output file." << endl;
+        return;
     }
 }
