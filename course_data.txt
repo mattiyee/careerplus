@@ -263,7 +263,7 @@
 - 5 CAR0100 7 .
 
 # CHM2045 " General Chemistry 1 " 3 " Steven Harris " .
-@ Electrical Engineering , Mechanical Engineering , Biomdeical Engineering , Nuclear Engineering , Chemical Engineering , Materials Science , Bio/Ag Engineering , Civil Engineering , Aerospace Engineering .
+@ Electrical Engineering , Mechanical Engineering , Biomdeical Engineering , Nuclear Engineering , Chemical Engineering , Materials Science , Biological/Agricultural Engineering , Civil Engineering , Aerospace Engineering .
 * SECTION 1 250 0
 - 2 CAR0100 5 6 .
 - 1 FLO100 4 .
@@ -286,7 +286,7 @@
 - 4 CAR0100 5 .
 
 # CHM2046 " General Chemistry 2 " 3 " Y Cao " ~ CHM2045 MAC2311 .
-@ Biomdeical Engineering , Nuclear Engineering , Chemical Engineering , Bio/Ag Engineering .
+@ Biomdeical Engineering , Nuclear Engineering , Chemical Engineering , Biological/Agricultural Engineering .
 * SECTION 1 250 0
 - 2 CAR0100 5 6 .
 - 1 FLO100 4 .
@@ -500,7 +500,7 @@
 - 3 WEIM1084 7 .
 
 # EGM3520 " Mechanics of Materials " 3 " Peeter Ifju " ~ EGM2511 MAC2313 .
-@ Bio/Ag Engineering , Civil Engineering , Aerospace Engineering .
+@ Biological/Agricultural Engineering , Civil Engineering , Aerospace Engineering .
 * SECTION 1 250 0
 - 1 WEIL270 7 .
 - 3 WEIL270 7 .
@@ -519,7 +519,7 @@
 - 5 WEIL270 10 .
 
 # ABE3000C " Applications in Biological Engineering " 3 " Melanie Correll " ~ BSC2010 .
-@ Bio/Ag Engineering .
+@ Biological/Agricultural Engineering .
 * SECTION 1 250 0
 - 1 WEIL270 4 .
 - 3 WEIL270 4 .
@@ -537,7 +537,7 @@
 - 5 ROG129 6 7 . 
 
 # ABE4042C " Biological Engineering Design 1 " 2 " Ziynet Boz " ~ ABE2012C .
-@ Bio/Ag Engineering .
+@ Biological/Agricultural Engineering .
 * SECTION 1 250 0
 - 5 WEIL270 7 8 .
 - 3 ROG129 7 . 
@@ -667,7 +667,7 @@
 * SECTION 2 250 0
 - 1 TUR2306 8 10 .
 
-# ESI4523 " Industrial Systems Simulation " 3 " Xiang Zhong " ~ COP2271 ESI3215C.
+# ESI4523 " Industrial Systems Simulation " 3 " Xiang Zhong " ~ COP2271 ESI3215C .
 @ Industrial Engineering .
 * SECTION 1 250 0
 - 1 LIT237 2 .
@@ -686,3 +686,16 @@
 * SECTION 2 250 0
 - 2 CAR100 2 3 .
 - 4 CAR100 2 3 .
+
+# COP2271 " Computer Programming for Engineers " 2 " Kimberly Stubbs " ~ MAC2312 .
+@ Electrical Engineering , Mechanical Engineering , Biomedical Engineering , Nuclear Engineering , Chemical Engineering , Materials Science , Biological/Agricultural , Civil Engineering , Industrial Engineering , Aerospace Engineering .
+* SECTION 1 250 0
+- 1 CAR100 4 5 .
+* SECTION 2 250 0
+- 2 CAR100 4 5 .
+* SECTION 3 250 0
+- 3 CAR100 4 5 .
+* SECTION 4 250 0
+- 4 CAR100 4 5 .
+* SECTION 5 250 0
+- 5 CAR100 4 5 .
