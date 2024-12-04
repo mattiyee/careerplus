@@ -1,9 +1,11 @@
 # COP3530 " Data Structures and Algorithms " 3 " Amanpreet Kapoor " ~ COP3503 MAP2312 .
+@ Computer Science , Digital Arts and Sciences .
 * SECTION 1 150 0
 - 2 CAR0100 5 6 .
 - 4 CAR0100 5 6 .
 
 # MAC2311 " Analytic Geometry and Calculus 1 " 4 " John Streese " .
+@ Any .
 * SECTION 1 125 0
 - 1 CAR0100 3 .
 - 2 LIT0201 4 .
@@ -26,6 +28,7 @@
 - 5 CAR0100 3 .
 
 # MAC2312 " Analytic Geometry and Calculus 2 " 4 " Stephen Adams " ~ MAC2311 .
+@ Any .
 * SECTION 1 150 0
 - 1 NRN1020 8 .
 - 2 LIT0206 5 .
@@ -48,6 +51,7 @@
 - 5 NRN1020 8 .
 
 # MAC2313 " Analytic Geometry and Calculus 3 " 4 " Missy Shabazz " ~ MAC2312 .
+@ Any .
 * SECTION 1 150 0
 - 1 CAR0100 4 .
 - 2 LIT0207 4 .
@@ -70,6 +74,7 @@
 - 5 CAR0100 4 .
 
 # PHY2048 " Physics with Calculus 1 " 3 " Shawn Weatherford " ~ MAC2311 .
+@ Any .
 * SECTION 1 125 0
 - 1 NPB1001 3 .
 - 2 NPB1101 3 .
@@ -92,6 +97,7 @@
 - 5 NPB1001 3 .
 
 # PHY2049 " Physics with Calculus 2 " 3 " Selman Hershfield " ~ PHY2048 MAC2312 .
+@ Any .
 * SECTION 1 125 0
 - 1 NPB1001 5 .
 - 2 NPB1101 5 .

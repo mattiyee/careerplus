@@ -21,10 +21,12 @@ map<string, Course*> parseCourseData(const string& file_name) {
         string course_code;
         string course_name;
         string professor;
+        string major;
         int seats;
         int enrolled;
         int credits;
         vector<string> prerequisites;
+        vector<string> majors;
         // Storing course variables
 
         while (getline(text_file, line)) {
@@ -36,6 +38,7 @@ map<string, Course*> parseCourseData(const string& file_name) {
             if (indicator == "#") {
                 course_name = "";
                 professor = "";
+                major = "";
                 sections = 0;
                 // Resetting variables
 
@@ -64,19 +67,39 @@ map<string, Course*> parseCourseData(const string& file_name) {
 
                 ss >> indicator;
                 ss >> indicator;
-                // cout << course_code << ", " << course_name << ", " << professor << ", " << credits << endl;
-                // cout << "Pre-reqs: ";
+
                 while (indicator != ".") {
-                    // cout << indicator << " ";
                     prerequisites.push_back(indicator);
                     ss >> indicator;
                 } // Checking for any prerequisites, and storing them
-                // cout << endl;
 
                 Course* temp = new Course(course_code, course_name, professor, credits, prerequisites);
                 course_output[course_code] = temp;
                 continue;
-            } else if (indicator == "*") {
+            }
+            else if (indicator == "@") {
+                ss >> indicator;  // major(s) specific to course (if any)
+                while (indicator != ".") {
+                    if (indicator == ",") {
+                        majors.push_back(major);
+                        major = "";
+
+                        ss >> indicator;
+                    } else {
+                        major = major + indicator;
+
+                        ss >> indicator;
+                        if (indicator != "," and indicator != ".") {
+                            major = major + " ";
+                        }
+                    }
+                }
+                majors.push_back(major);
+                major = "";
+                course_output[course_code]->addMajors(majors);
+                majors = {};
+            }
+            else if (indicator == "*") {
                 ss >> indicator;
                 ss >> indicator; // Section number
                 ss >> indicator; // Seats
@@ -183,10 +206,10 @@ map<string, Student*> parseStudentData(const string& file_name) {
 }
 
 int main() {
-    generateStudents(100000, "/Users/catherinewu/Downloads/careerplus-main/generate_students.txt");
-
     map<string, Course*> course_catalog = parseCourseData("/Users/catherinewu/Downloads/careerplus-main/course_data.txt");
-    map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Downloads/careerplus-main/generate_students_temp.txt");
+    map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Downloads/careerplus-main/generate_students.txt");
     cout << "complete" << endl;
+
+    student_database["00008015"]->Register("MAC2311", course_catalog, 1);
     return 0;
 }

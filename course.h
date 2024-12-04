@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
+#include <set>
 using namespace std;
 
 #ifndef PROJECT3_COURSE_H
@@ -35,6 +36,7 @@ class Course {
         vector<CourseTime*> course_times;
         int seats;  // total seats
         int enrolled;  // taken seats
+        set<string> enrolled_IDs;  // UFIDs of currently registered students
         Section(int& s, int& e) : seats(s), enrolled(e) {};
     };
 public:
@@ -44,6 +46,7 @@ public:
     vector<Section*> sections;
     int credits;
     vector<string> prerequisites;
+    vector<string> majors;  // either vector of major(s) if major-specific, or "Any"
 
     Course(const string& c, const string& n, const string& p, const int& cr, vector<string> pre) {
         this->code = c;
@@ -60,6 +63,9 @@ public:
         CourseTime* temp = new CourseTime(ss);
         this->sections[section-1]->course_times.push_back(temp);
     }
+    void addMajors(vector<string>& maj) {
+        this->majors = maj;
+    }
     vector<vector<int>> allSectionTimes(const int& section) {
         // Vector of vectors of times in a section, [days of week][period(s)]
         vector<vector<int>> times;
@@ -72,6 +78,9 @@ public:
     }
     int openSeats(const int& section) {
         return (this->sections[section]->seats) - (this->sections[section]->enrolled);
+    }
+    vector<string> enrollledStudents(const int& section) {
+
     }
 
 };
