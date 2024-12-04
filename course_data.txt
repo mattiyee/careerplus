@@ -263,7 +263,7 @@
 - 5 CAR0100 7 .
 
 # CHM2045 " General Chemistry 1 " 3 " Steven Harris " .
-@ Electrical Engineering, Mechanical Engineering, Biomdeical Engineering, Nuclear Engineering, Chemical Engineering, Material Science, Bio/Ag Engineering, Civil Engineering, Aerospace Engineering .
+@ Electrical Engineering, Mechanical Engineering, Biomdeical Engineering, Nuclear Engineering, Chemical Engineering, Materials Science, Bio/Ag Engineering, Civil Engineering, Aerospace Engineering .
 * SECTION 1 250 0
 - 2 CAR0100 5 6 .
 - 1 FLO100 4 .
@@ -381,13 +381,120 @@
 - 4 CAR0100 4 5 .
 
 # EEL3923C " Electrical Engineering Design 1 " 3 " Erin Patrick " ~ EEE3308C EEL3112 .
-@ Computer Engineering .
+@ Electrical Engineering .
 * SECTION 1 250 0
-- 2 CAR0100 4 5 .
-- 4 CAR0100 4 5 .
+- 2 CAR0100 11 .
+- 4 CAR0100 11 .
 * SECTION 2 250 0
-- 2 CAR0100 4 5 .
-- 4 CAR0100 4 5 .
+- 2 CAR0100 11 .
+- 4 CAR0100 11 .
 
+# EEL4924 " Electrical Engineering Design 2 " 3 " Bill Eisenstadt " ~ EEL3923C .
+@ Electrical Engineering .
+* SECTION 1 250 0
+- 1 ROL205 4 .
+- 3 ROL205 4 .
+- 5 ROL205 4 .
+* SECTION 2 250 0
+- 1 ROL205 4 .
+- 3 ROL205 4 .
+- 5 ROL205 4 .
 
+# EML2023 " Computer Aided Graphics and Design " 3 " Ashok Kumar " .
+@ Mechanical Engineering .
+* SECTION 1 250 0
+- 1 LIT121 7 .
+- 3 LIT121 7 .
+- 5 LIT121 7 .
+* SECTION 2 250 0
+- 1 LIT121 9 .
+- 3 LIT121 9 .
+- 5 LIT121 9 .
+* SECTION 3 250 0
+- 1 LIT121 10 .
+- 3 LIT121 10 .
+- 5 LIT121 10 .
 
+# ENU4001 " Nuclear Engineering Analysis 1 " 4 " Andreas Enqvist " ~ MAC2313 .
+@ Nuclear Engineering .
+* SECTION 1 250 0
+- 2 MAT105 3 4 .
+- 4 MAT105 3 4 .
+* SECTION 2 250 0
+- 2 MAT105 3 4 .
+- 4 MAT105 3 4 .
+* SECTION 3 250 0
+- 2 MAT105 3 4 .
+- 4 MAT105 3 4 .
+
+# EMA3010 " Materials " 3 " Kevin Gilley " ~ CHM2045 .
+@ Materials Science, Mechanical Engineering .
+* SECTION 1 250 0
+- 1 FLG230 5 .
+- 3 FLG230 5 .
+- 5 FLG230 5 .
+* SECTION 2 250 0
+- 1 FLG230 5 .
+- 3 FLG230 5 .
+- 5 FLG230 5 .
+* SECTION 3 250 0
+- 1 FLG230 5 .
+- 3 FLG230 5 .
+- 5 FLG230 5 .
+* SECTION 4 250 0
+- 1 FLG230 5 .
+- 3 FLG230 5 .
+- 5 FLG230 5 .
+* SECTION 5 250 0
+- 1 FLG230 5 .
+- 3 FLG230 5 .
+- 5 FLG230 5 .
+
+# EMA4125 " Kinetics of Materials " 3 " Victoria Miller " ~ EMA4314 .
+@ Materials Science .
+* SECTION 1 250 0
+- 1 LIT237 4 .
+- 3 LIT237 4 .
+- 5 LIT237 4 .
+* SECTION 2 250 0
+- 1 LIT237 6 .
+- 3 LIT237 6.
+- 5 LIT237 6 .
+
+# COP4020 " Programming Language Concepts " 3 " William Anderson " ~ COP3530 .
+@ Computer Science .
+* SECTION 1 250 0
+- 1 NPB1001 10 .
+- 3 NPB1001 10 .
+- 5 NPB1001 10 .
+* SECTION 2 250 0
+- 1 NPB1001 10 .
+- 3 NPB1001 10 .
+- 5 NPB1001 10 .
+* SECTION 3 250 0
+- 1 NPB1001 10 .
+- 3 NPB1001 10 .
+- 5 NPB1001 10 .
+
+# COP4600 " Operating Systems " 4 " Alexandre Gomes de Siqueira " ~ CDA3101 COP3530 .
+@ Computer Science, Computer Engineering .
+* SECTION 1 250 0
+- 2 CAR100 10 .
+- 4 CAR100 10 11 .
+- 3 WEIM1084 3 .
+* SECTION 2 250 0
+- 2 CAR100 10 .
+- 4 CAR100 10 11 .
+- 3 WEIM1084 4 .
+* SECTION 3 250 0
+- 2 CAR100 10 .
+- 4 CAR100 10 11 .
+- 3 WEIM1084 5 .
+* SECTION 4 250 0
+- 2 CAR100 10 .
+- 4 CAR100 10 11 .
+- 3 WEIM1084 6 .
+* SECTION 5 250 0
+- 2 CAR100 10 .
+- 4 CAR100 10 11 .
+- 3 WEIM1084 7 .
