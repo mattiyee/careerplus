@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include "student.h"
 #include "Course.h"
+#include "sortingAlgs.h"
 using namespace std;
 
 #ifndef CAREERPLUS_CLI_H
@@ -64,7 +65,7 @@ public:
         cout << "Thank you for registering for CareerPlus!\nWhat would you like to do next? (Please select an option below.)" << endl;
         while(true) {
             string selected_option;
-            cout << "1. View current schedule\n2. Register for a course\n3. Search for a student\n4. Exit" << endl;
+            cout << "1. View current schedule\n2. Register for a course\n3. Search for a student\n4. Show list of course codes\n5. Exit" << endl;
             getline(cin, selected_option);
 
             if(selected_option == "1") {
@@ -123,7 +124,12 @@ public:
                         continue;
                     }
                 }
-            } else if(selected_option == "4") {
+            } else if(selected_option == "4"){
+                cout << "Here is list of all the course codes, sorted in alphabetical order!\n" << endl;
+                //measureAndSort()
+            }
+
+            else if(selected_option == "5") {
                 cout << "Thank you for using CareerPlus! Have a great day!" << endl;
                 break;
             }
