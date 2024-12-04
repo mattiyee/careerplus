@@ -332,8 +332,28 @@ public:
                     Course* selected = it->second;
                     cout << "Here are the available sections for " << input_course << ". Please type the number of the section you wish to enroll in." << endl;
                     selected->displaySections();
-                    getline(cin, input_section);
-                    cout << user->Register(input_course, course_output, stoi(input_section)) << endl;
+                    cout << "If you are not interested in registering for a course, please type \"E\" to exit." << endl;
+                    bool input = true;
+                    bool valid = true;
+                    while(input) {
+                        getline(cin, input_section);
+                        if (input_section.size() != 1) {
+                            valid = false;
+                        } // Checking if there's only one character in the input
+                        if (valid) {
+                            cout << input_section << endl;
+                            if (input_section == "E" || input_section == "e") {
+                                input = false; // Exits while loop
+                            } else {
+                                for (char a : input_section) {
+                                    if (isdigit(a)) {cout << user->Register(input_course, course_output, stoi(input_section)) << endl; input = false;}
+                                    else {valid = false;}
+                                }
+                            }
+                        }
+                        if (!valid) {cout << "Invalid section. Please type in your desired section, or if you'd like to exit please type \"E\"." << endl;}
+                        valid = true;
+                    }
                 } else {
                     cout << "Course code " << input_course << " cannot be found. Returning to Main Menu..." << endl;
                 }
