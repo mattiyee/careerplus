@@ -1,119 +1,178 @@
 # COP3530 " Data Structures and Algorithms " 3 " Amanpreet Kapoor " ~ COP3503 MAP2312 .
 @ Computer Science , Digital Arts and Sciences, Computer Engineering
-* SECTION 1 150 0
-- 2 CAR0100 5 6 .
+* SECTION 1 250 0
+- 2 CAR0100 6 .
+- 4 CAR0100 5 6 .
+* SECTION 2 250 0
+- 2 CAR0100 6 .
+- 4 CAR0100 5 6 .
+* SECTION 3 250 0
+- 2 CAR0100 6 .
+- 4 CAR0100 5 6 .
+* SECTION 4 250 0
+- 2 CAR0100 6 .
 - 4 CAR0100 5 6 .
 
 # MAC2311 " Analytic Geometry and Calculus 1 " 4 " John Streese " .
 @ Any .
-* SECTION 1 125 0
+* SECTION 1 250 0
 - 1 CAR0100 3 .
 - 2 LIT0201 4 .
 - 3 CAR0100 3 .
 - 5 CAR0100 3 .
-* SECTION 2 150 0
+* SECTION 2 250 0
 - 1 CAR0100 3 .
 - 3 CAR0100 3 .
 - 4 LIT0201 4 .
 - 5 CAR0100 3 .
-* SECTION 3 150 0
+* SECTION 3 250 0
 - 1 CAR0100 3 .
 - 2 LIT0201 5 .
 - 3 CAR0100 3 .
 - 5 CAR0100 3 .
-* SECTION 4 150 0
+* SECTION 4 250 0
 - 1 CAR0100 3 .
 - 3 CAR0100 3 .
 - 4 LIT0201 5 .
 - 5 CAR0100 3 .
+* SECTION 5 250 0
+- 1 CAR0100 3 .
+- 3 CAR0100 3 .
+- 4 LIT0202 5 .
+- 5 CAR0100 3 .
+* SECTION 6 250 0
+- 1 CAR0100 3 .
+- 3 CAR0100 3 .
+- 4 LIT0203 5 .
+- 5 CAR0100 3 .
 
 # MAC2312 " Analytic Geometry and Calculus 2 " 4 " Stephen Adams " ~ MAC2311 .
 @ Any .
-* SECTION 1 150 0
+* SECTION 1 250 0
 - 1 NRN1020 8 .
 - 2 LIT0206 5 .
 - 3 NRN1020 8 .
 - 5 NRN1020 8 .
-* SECTION 2 150 0
+* SECTION 2 250 0
 - 1 NRN1020 8 .
 - 3 NRN1020 8 .
 - 4 LIT0206 5 .
 - 5 NRN1020 8 .
-* SECTION 3 150 0
+* SECTION 3 250 0
 - 1 NRN1020 8 .
 - 2 LIT0206 6 .
 - 3 NRN1020 8 .
 - 5 NRN1020 8 .
-* SECTION 4 150 0
+* SECTION 4 250 0
 - 1 NRN1020 8 .
 - 3 NRN1020 8 .
 - 4 LIT0206 6 .
 - 5 NRN1020 8 .
+* SECTION 5 250 0
+- 1 NRN1020 8 .
+- 3 NRN1020 8 .
+- 5 NRN1020 8 .
+- 4 LIT0206 6 .
+* SECTION 6 250 0
+- 1 NRN1020 8 .
+- 3 NRN1020 8 .
+- 4 LIT0206 7 .
+- 5 NRN1020 8 .
 
 # MAC2313 " Analytic Geometry and Calculus 3 " 4 " Missy Shabazz " ~ MAC2312 .
 @ Any .
-* SECTION 1 150 0
+* SECTION 1 250 0
 - 1 CAR0100 4 .
 - 2 LIT0207 4 .
 - 3 CAR0100 4 .
 - 5 CAR0100 4 .
-* SECTION 2 150 0
+* SECTION 2 250 0
 - 1 CAR0100 4 .
 - 3 CAR0100 4 .
 - 4 LIT0207 4 .
 - 5 CAR0100 4 .
-* SECTION 3 150 0
+* SECTION 3 250 0
 - 1 CAR0100 4 .
 - 2 LIT0207 5 .
 - 3 CAR0100 4 .
 - 5 CAR0100 4 .
-* SECTION 4 150 0
+* SECTION 4 250 0
 - 1 CAR0100 4 .
 - 3 CAR0100 4 .
-- 4 LIT0207 5 .
+- 4 LIT0207 2 .
+- 5 CAR0100 4 .
+* SECTION 5 250 0
+- 1 CAR0100 4 .
+- 3 CAR0100 4 .
+- 5 CAR0100 4 .
+- 5 LIT0207 5 .
+* SECTION 6 250 0
+- 1 CAR0100 4 .
+- 3 CAR0100 4 .
+- 4 LIT0207 6 .
 - 5 CAR0100 4 .
 
 # PHY2048 " Physics with Calculus 1 " 3 " Shawn Weatherford " ~ MAC2311 .
 @ Any .
-* SECTION 1 125 0
+* SECTION 1 250 0
 - 1 NPB1001 3 .
 - 2 NPB1101 3 .
 - 3 NPB1001 3 .
 - 5 NPB1001 3 .
-* SECTION 2 125 0
+* SECTION 2 250 0
 - 1 NPB1001 3 .
 - 3 NPB1001 3 .
 - 4 NPB1101 3 .
 - 5 NPB1001 3 .
-* SECTION 3 125 0
+* SECTION 3 250 0
 - 1 NPB1001 3 .
 - 2 NPB1101 4 .
 - 3 NPB1001 3 .
 - 5 NPB1001 3 .
-* SECTION 4 125 0
+* SECTION 4 250 0
 - 1 NPB1001 3 .
 - 3 NPB1001 3 .
 - 4 NPB1101 4 .
 - 5 NPB1001 3 .
+* SECTION 5 250 0
+- 1 NPB1001 3 .
+- 3 NPB1001 3 .
+- 4 NPB1101 8 .
+- 5 NPB1001 3 .
+* SECTION 6 250 0
+- 1 NPB1001 3 .
+- 3 NPB1001 3 .
+- 5 NPB1101 8 .
+- 5 NPB1001 3 .
 
 # PHY2049 " Physics with Calculus 2 " 3 " Selman Hershfield " ~ PHY2048 MAC2312 .
 @ Any .
-* SECTION 1 125 0
+* SECTION 1 250 0
 - 1 NPB1001 5 .
 - 2 NPB1101 5 .
 - 3 NPB1001 5 .
 - 5 NPB1001 5 .
-* SECTION 2 125 0
+* SECTION 2 250 0
 - 1 NPB1001 5 .
 - 3 NPB1001 5 .
 - 4 NPB1101 5 .
 - 5 NPB1001 5 .
-* SECTION 3 125 0
+* SECTION 3 250 0
 - 1 NPB1001 5 .
 - 2 NPB1101 6 .
 - 3 NPB1001 5 .
 - 5 NPB1001 5 .
-* SECTION 4 125 0
+* SECTION 4 250 0
+- 1 NPB1001 5 .
+- 3 NPB1001 5 .
+- 4 NPB1101 6 .
+- 5 NPB1001 5 .
+* SECTION 5 250 0
+- 1 NPB1001 5 .
+- 3 NPB1001 5 .
+- 4 NPB1101 6 .
+- 5 NPB1001 5 .
+* SECTION 6 250 0
 - 1 NPB1001 5 .
 - 3 NPB1001 5 .
 - 4 NPB1101 6 .
@@ -121,103 +180,214 @@
 
 # MAP2302 " Elementary Differential Equations " 3 " Carol Demas " ~ MAC2312 .
 @ Any .
-* SECTION 1 125 0
+* SECTION 1 250 0
 - 1 LIT109 5 .
 - 3 LIT109 5 .
 - 5 LIT109 5 .
-* SECTION 2 125 0
+* SECTION 2 250 0
 - 1 LIT109 5 .
 - 3 LIT109 5 .
 - 5 LIT109 5 .
-* SECTION 3 125 0
+* SECTION 3 250 0
 - 1 LIT109 5 .
 - 3 LIT109 5 .
 - 5 LIT109 5 .
-* SECTION 4 125 0
+* SECTION 4 250 0
 - 1 LIT109 5 .
 - 3 LIT109 5 .
 - 5 LIT109 5 .
 
 # COT3100 " Applications of Discrete Structures " 3 " Peter Dobbins " ~ MAC2311 COP3502 .
 @ Computer Science, Digital Arts and Sciences, Computer Engineering .
-* SECTION 1 125 0
-- 1 LIT109 5 .
-- 3 LIT109 5 .
-- 5 LIT109 5 .
-* SECTION 2 125 0
-- 1 LIT109 5 .
-- 3 LIT109 5 .
-- 5 LIT109 5 .
-* SECTION 3 125 0
-- 1 LIT109 5 .
-- 3 LIT109 5 .
-- 5 LIT109 5 .
-* SECTION 4 125 0
+* SECTION 1 250 0
+- 1 LIT109 6 .
+- 3 LIT109 6 .
+- 5 LIT109 6 .
+* SECTION 2 250 0
+- 1 LIT109 6 .
+- 3 LIT109 6 .
+- 5 LIT109 6 .
+* SECTION 3 250 0
+- 1 LIT109 6 .
+- 3 LIT109 6 .
+- 5 LIT109 6 .
+* SECTION 4 250 0
 - 1 LIT109 5 .
 - 3 LIT109 5 .
 - 5 LIT109 5 .
 
 # COP3502C " Programming Fundamentals 1 " 4 " Ashish Aggarwal " .
 @ Computer Science, Digital Arts and Sciences, Computer Engineering .
-* SECTION 1 150 0
+* SECTION 1 250 0
 - 1 CAR0100 4 .
 - 2 LIT0207 4 .
 - 3 CAR0100 4 .
 - 5 CAR0100 4 .
-* SECTION 2 150 0
+* SECTION 2 250 0
 - 1 CAR0100 4 .
 - 3 CAR0100 4 .
 - 4 LIT0207 4 .
 - 5 CAR0100 4 .
-* SECTION 3 150 0
+* SECTION 3 250 0
 - 1 CAR0100 4 .
 - 2 LIT0207 5 .
 - 3 CAR0100 4 .
 - 5 CAR0100 4 .
-* SECTION 4 150 0
+* SECTION 4 250 0
 - 1 CAR0100 4 .
 - 3 CAR0100 4 .
 - 4 LIT0207 5 .
 - 5 CAR0100 4 .
 
-# COP3503C " Programming Fundamentals 2 " 4 " Fatemeh Tavassoli " ~ COP3502C MAC2311.
+# COP3503C " Programming Fundamentals 2 " 4 " Fatemeh Tavassoli " ~ COP3502C MAC2311 .
 @ Computer Science, Digital Arts and Sciences, Computer Engineering .
-* SECTION 1 150 0
+* SECTION 1 250 0
 - 1 CAR0100 7 .
 - 2 MALA3210 4 .
 - 3 CAR0100 7 .
 - 5 CAR0100 7 .
-* SECTION 2 150 0
+* SECTION 2 250 0
 - 1 CAR0100 7 .
 - 3 CAR0100 7 .
 - 4 MALA3210 4 .
 - 5 CAR0100 7 .
-* SECTION 3 150 0
+* SECTION 3 250 0
 - 1 CAR0100 7 .
 - 2 MALA3210 5 .
 - 3 CAR0100 7 .
 - 5 CAR0100 7 .
-* SECTION 4 150 0
+* SECTION 4 250 0
 - 1 CAR0100 7 .
 - 3 CAR0100 7 .
 - 4 MALA3210 5 .
 - 5 CAR0100 7 .
 
 # CHM2045 " General Chemistry 1 " 3 " Steven Harris " .
-@ Electrical Engineering, Mechanical Engineering, Biomdeical Engineering, Nuclear Engineering, Chemical Engineering, Material Science, Bio/Ag Eng, Civil Engineering, Aerospace Engineering .
-* SECTION 1 150 0
+@ Electrical Engineering, Mechanical Engineering, Biomdeical Engineering, Nuclear Engineering, Chemical Engineering, Material Science, Bio/Ag Engineering, Civil Engineering, Aerospace Engineering .
+* SECTION 1 250 0
 - 2 CAR0100 5 6 .
 - 1 FLO100 4 .
 - 4 CAR0100 5 .
-* SECTION 2 150 0
+* SECTION 2 250 0
 - 2 CAR0100 5 6 .
 - 1 FLO100 4 .
 - 4 CAR0100 5 .
-* SECTION 3 150 0
+* SECTION 3 250 0
 - 2 CAR0100 5 6 .
 - 1 FLO100 4 .
 - 4 CAR0100 5 .
-* SECTION 4 150 0
+* SECTION 4 250 0
 - 2 CAR0100 5 6 .
 - 1 FLO100 4 .
 - 4 CAR0100 5 .
+* SECTION 5 250 0
+- 2 CAR0100 5 6 .
+- 1 FLO100 8 .
+- 4 CAR0100 5 .
+
+# CHM2046 " General Chemistry 2 " 3 " Y Cao " ~ CHM2045 MAC2311 .
+@ Biomdeical Engineering, Nuclear Engineering, Chemical Engineering, Bio/Ag Engineering .
+* SECTION 1 250 0
+- 2 CAR0100 5 6 .
+- 1 FLO100 4 .
+- 4 CAR0100 5 .
+* SECTION 2 250 0
+- 2 CAR0100 5 6 .
+- 1 FLO100 4 .
+- 4 CAR0100 5 .
+* SECTION 3 250 0
+- 2 CAR0100 5 6 .
+- 1 FLO100 4 .
+- 4 CAR0100 5 .
+* SECTION 4 250 0
+- 2 CAR0100 5 6 .
+- 1 FLO100 4 .
+- 4 CAR0100 5 .
+
+# ARH2051 " Introduction to the Principles and History of Art 2 " 3 " Douglas Gabriel " .
+@ Digital Arts and Sciences .
+* SECTION 1 250 0
+- 2 CAR0100 6 .
+- 4 FAC0116A 10 .
+- 4 CAR0100 6 .
+* SECTION 2 250 0
+- 2 CAR0100 6 .
+- 5 FAC0116A 6 .
+- 4 CAR0100 6 .
+
+# CAP3020 " Theory and Practice of Multimedia Production " 3 " William Benda " ~ CAP3027 .
+@ Digital Arts and Sciences .
+* SECTION 1 250 0
+- 2 CAR0100 8 9 .
+- 4 CAR0100 9 .
+* SECTION 2 250 0
+- 2 CAR0100 8 9 .
+- 4 CAR0100 9 .
+
+# CEN3031 " Intro to Software Engineering " 3 " Neha Rani " ~ COP3530 .
+@ Computer Science, Computer Engineering .
+* SECTION 1 250 0
+- 1 CAR0100 8 .
+- 3 CAR0100 8 .
+- 5 CAR0100 8 .
+- 5 MALA3210 2 .
+* SECTION 2 250 0
+- 1 CAR0100 8 .
+- 3 CAR0100 8 .
+- 5 CAR0100 8 .
+- 4 MALA3210 9 .
+* SECTION 3 250 0
+- 1 CAR0100 8 .
+- 3 CAR0100 8 .
+- 5 CAR0100 8 .
+- 5 MALA3210 7 .
+
+# EEL4744C " Microprocessor Applications " 4 " Eric Schwartz " ~ EEL3701C COP3503C .
+@ Computer Engineering .
+* SECTION 1 250 0
+- 2 CAR0100 4 .
+- 3 NEB202 9 10 .
+- 4 MALA3210 4 5 .
+* SECTION 2 250 0
+- 2 CAR0100 4 .
+- 3 NEB202 9 10 .
+- 4 MALA3210 4 5 .
+
+# EEL4712C " Digital Design " 4 " Rickard Ewetz " ~ EEL3701C .
+@ Computer Engineering .
+* SECTION 1 250 0
+- 1 CAR0100 2 .
+- 3 CAR0100 2 .
+- 5 CAR0100 2 .
+- 1 NEB0213B 9 10 .
+* SECTION 2 250 0
+- 1 CAR0100 2 .
+- 3 CAR0100 2 .
+- 5 CAR0100 2 .
+- 2 NEB0213B 9 10 .
+* SECTION 3 250 0
+- 1 CAR0100 2 .
+- 3 CAR0100 2 .
+- 5 CAR0100 2 .
+- 2 NEB0213B 7 8 .
+
+# CEN4908C " Computer Engineering Design 2 " 3 " Carsten Thue-Bludworth " ~ CEN3907C .
+@ Computer Engineering .
+* SECTION 1 250 0
+- 2 CAR0100 4 5 .
+- 4 CAR0100 4 5 .
+* SECTION 2 250 0
+- 2 CAR0100 4 5 .
+- 4 CAR0100 4 5 .
+
+# EEL3923C " Electrical Engineering Design 1 " 3 " Erin Patrick " ~ EEE3308C EEL3112 .
+@ Computer Engineering .
+* SECTION 1 250 0
+- 2 CAR0100 4 5 .
+- 4 CAR0100 4 5 .
+* SECTION 2 250 0
+- 2 CAR0100 4 5 .
+- 4 CAR0100 4 5 .
+
+
+
