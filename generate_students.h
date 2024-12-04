@@ -8,29 +8,42 @@
 using namespace std;
 
 void generateStudents(int num, const string& output_addr) {
-    vector<string> first_names = {"Jacob", "Emily", "Michael", "Madison", "Joshua", "Madison", "Emma", "Matthew",
-                                  "Olivia", "Hannah", "Daniel", "Christopher", "Abigail", "Andrew", "Isabella",
-                                  "Ethan", "Samantha", "Joseph", "Elizabeth", "William", "Ashley", "Anthony", "Alexis",
-                                  "David", "Sarah", "Alexander", "Sophia", "Nicholas", "Alyssa", "Ryan", "Grace",
-                                  "Tyler", "Ava", "James", "Taylor", "John", "Brianna", "Jonathan", "Lauren", "Noah",
-                                  "Chloe", "Brandon", "Natalie", "Christian", "Kayla", "Dylan", "Jessica", "Samuel",
-                                  "Anna", "Benjamin", "Victoria", "Nathan", "Mia", "Zachary", "Hailey", "Logan",
-                                  "Sydney", "Justin", "Jasmine", "Gabriel", "Julia", "Jose", "Morgan", "Austin",
-                                  "Destiny", "Kevin", "Rachel", "Elijah", "Ella", "Caleb", "Kaitlyn", "Robert", "Megan",
-                                  "Thomas", "Katherine", "Jordan", "Savannah", "Cameron", "Jennifer", "Jack",
-                                  "Alexandra", "Hunter", "Allison", "Jackson", "Haley", "Angel", "Maria", "Isaiah",
-                                  "Kaylee", "Evan", "Lily", "Isaac", "Makayla", "Luke", "Brooke", "Mason", "Nicole",
-                                  "Jayden", "Mackenzie", "Jason", "Addison"};
-    vector<string> last_names = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore",
-                                 "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson",
-                                 "Garcia", "Martinez", "Robinson", "Clark", "Rodriguez", "Lewis", "Lee", "Walker",
-                                 "Hall", "Allen", "Young", "Hernandez", "King", "Wright", "Lopez", "Hill", "Scott",
-                                 "Green", "Adams", "Baker", "Gonzalez", "Nelson", "Carter", "Mitchell", "Perez",
-                                 "Roberts", "Turner", "Phillips", "Campbell", "Parker", "Evans", "Edwards", "Collins",
-                                 "Stewart", "Sanchez", "Morris", "Rogers", "Reed", "Cook", "Morgan", "Bell", "Murphy",
-                                 "Bailey", "Rivera", "Cooper", "Richardson", "Cox", "Howard", "Ward", "Torres",
-                                 "Peterson", "Gray", "Ramirez", "James", "Watson", "Brooks", "Kelly", "Sanders",
-                                 "Price", "Bennett", "Wood", "Barnes"};
+    vector<string> first_names = {"Jacob", "Emily", "Michael", "Madison", "Joshua", "Emma", "Matthew", "Olivia", "Hannah", "Daniel", "Christopher",
+                                  "Abigail", "Andrew", "Isabella", "Ethan", "Samantha", "Joseph", "Elizabeth", "William", "Ashley", "Anthony",
+                                  "Alexis", "David", "Sarah", "Alexander", "Sophia", "Nicholas", "Alyssa", "Ryan", "Grace", "Tyler", "Ava", "James",
+                                  "Taylor", "John", "Brianna", "Jonathan", "Lauren", "Noah", "Chloe", "Brandon", "Natalie", "Christian", "Kayla",
+                                  "Dylan", "Jessica", "Samuel", "Anna", "Benjamin", "Victoria", "Nathan", "Mia", "Zachary", "Hailey", "Logan",
+                                  "Sydney", "Justin", "Jasmine", "Gabriel", "Julia", "Jose", "Morgan", "Austin", "Destiny", "Kevin", "Rachel",
+                                  "Elijah", "Ella", "Caleb", "Kaitlyn", "Robert", "Megan", "Thomas", "Katherine", "Jordan", "Savannah", "Cameron",
+                                  "Jennifer", "Jack", "Alexandra", "Hunter", "Allison", "Jackson", "Haley", "Angel", "Maria", "Isaiah", "Kaylee",
+                                  "Evan", "Lily", "Isaac", "Makayla", "Luke", "Brooke", "Mason", "Nicole", "Jayden", "Mackenzie", "Jason",
+                                  "Addison", "Catherine", "Harshil", "Matt", "Aaliyah", "Adrian", "Amara", "Andres", "Aria", "Asher", "Ayden",
+                                  "Bella", "Camila", "Carlos", "Carter", "Charlotte", "Clara", "Damian", "Derek", "Dominic", "Easton", "Eleanor",
+                                  "Elias", "Elise", "Ellie", "Emilia", "Emmanuel", "Enzo", "Esmeralda", "Evelyn", "Felix", "Gabriella", "Gianna",
+                                  "Grayson", "Harper", "Hassan", "Henry", "Hudson", "Ian", "Ibrahim", "Ivy", "Jaxon", "Jeremiah", "Jocelyn", "Jorge",
+                                  "Josiah", "Julian", "Kai", "Kaleb", "Keira", "Khadija", "Kingston", "Kylie", "Laila", "Landon", "Leah", "Leonardo",
+                                  "Lila", "Luna", "Madeline", "Malachi", "Mariah", "Mateo", "Maxwell", "Micah", "Mila", "Muhammad", "Nathaniel",
+                                  "Nia", "Nina", "Noelle", "Nora", "Oliver", "Omar", "Oscar", "Parker", "Penelope", "Quinn", "Rafael", "Reagan",
+                                  "Riley", "Roman", "Rose", "Ruby", "Sadie", "Santiago", "Sebastian", "Serenity", "Stella", "Theodore", "Valentina",
+                                  "Violet", "Wyatt", "Zara", "Zion"};
+    ;
+    ;
+    vector<string> last_names = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson",
+                                 "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson", "Clark",
+                                 "Rodriguez", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young", "Hernandez", "King", "Wright", "Lopez", "Hill",
+                                 "Scott", "Green", "Adams", "Baker", "Gonzalez", "Nelson", "Carter", "Mitchell", "Perez", "Roberts", "Turner",
+                                 "Phillips", "Campbell", "Parker", "Evans", "Edwards", "Collins", "Stewart", "Sanchez", "Morris", "Rogers",
+                                 "Reed", "Cook", "Morgan", "Bell", "Murphy", "Bailey", "Rivera", "Cooper", "Richardson", "Cox", "Howard", "Ward",
+                                 "Torres", "Peterson", "Gray", "Ramirez", "James", "Watson", "Brooks", "Kelly", "Sanders", "Price", "Bennett",
+                                 "Wood", "Barnes", "Wu", "Rathod", "Yee", "Nguyen", "Patel", "Kim", "Gomez", "Chavez", "Flores", "Diaz", "Reyes",
+                                 "Long", "Foster", "Graham", "Ross", "Powell", "Sullivan", "Russell", "Ortiz", "Jenkins", "Perry", "Butler",
+                                 "Henderson", "Barnett", "Fisher", "Ruiz", "Hawkins", "Stone", "Sharp", "Cunningham", "Webb", "Peters", "Hamilton",
+                                 "Hunter", "Vasquez", "Freeman", "Griffin", "Shaw", "Holland", "Jordan", "Bishop", "Oliver", "McCoy", "Nash",
+                                 "Barker", "Blair", "Choi", "Alvarez", "Ramos", "Singh", "Fernandez", "Fleming", "Palmer", "Lynch", "Mendez",
+                                 "Cruz", "Gupta", "Navarro", "Guerrero", "Castillo", "Maldonado", "Vargas", "Ramachandran", "Chang", "Tran",
+                                 "Mehta", "Silva", "Kumar", "Washington", "Jefferson", "Franklin", "Cortez", "Delgado", "Cabrera", "Espinoza",
+                                 "Miranda", "Valdez", "Molina", "Aguilar", "Acosta", "Singhal", "Malik", "Sharma"};
+    ;
 
     random_device dev;
     mt19937 rng(dev());

@@ -50,12 +50,13 @@ public:
         return prev_courses;
     }
     string Register(const string code, unordered_map<string, Course*>& catalog, const int section) {
+        int section_idx = section - 1;
         if (catalog.count(code) != 1) {
             return "Enroll " + code + ": ERROR (Invalid class code)";  // Class not found in catalog
         }
         // Attempts to register student for section, returns message based on success or error
         Course* to_add = catalog[code];
-        if (section > to_add->sections.size()-1) {
+        if (section > to_add->sections.size()) {
             return "Enroll " + code + ": ERROR (" + to_string(section) + " is invalid section number)";
         }
 
@@ -72,7 +73,7 @@ public:
         }
 
         // 1. CHECK FOR OPEN SEATS
-        if (to_add->openSeats(section) < 1) {
+        if (to_add->openSeats(section_idx) < 1) {
             return "Enroll " + code + ": ERROR (Section " + to_string(section) + " is full)";  // Return full message
         }
 
@@ -94,32 +95,32 @@ public:
         }
 
         // 3. CHECK FOR TIME CONFLICTS
-        /*vector<vector<int>> new_times = to_add->allSectionTimes(section);
-        vector<vector<int>> current_times;
+        vector<vector<int>> new_times = to_add->allSectionTimes(section_idx);  // all times for section of course student is attempting to add
+        vector<vector<int>> current_times;  // all times for each course student is currently registered for (changes each course iteration)
         // Loop compares class times for all courses student is already registered in
-        for (Course* c : this->courses) {
-            for (int i=0; i<c->sections.size(); i++) {
-                current_times = c->allSectionTimes(i);
-                for (int day=0; day<5; day++) {
-                    for (int period : new_times[day]) {
-                        auto it = find(current_times[day].begin(), current_times[day].end(), period);
-                        if (it != current_times[day].end()) {
-                            // TIME CONFLICT w/already registered class
-                            return c->code;  // Return course code
-                        }
+
+        for (int i=0; i<this->courses.size(); i++) {  // iterates through each course student is currently registered for
+            int registered_section = this->sections[i];  // gets section number student is registered for
+            current_times = this->courses[i]->allSectionTimes(registered_section);
+
+            for (int day=0; day<5; day++) {  // iterates through each day comparing class meeting times
+                for (int period : new_times[day]) {
+                    auto it = find(current_times[day].begin(), current_times[day].end(), period);
+                    if (it != current_times[day].end()) {
+                        // TIME CONFLICT w/already registered class
+                        return "Enroll " + code + ": ERROR (Time conflict with " + this->courses[i]->code + ")";  // Return course code
                     }
                 }
             }
-        }*/
+        }
         // NO time conflict found, register student
         this->courses.push_back(catalog[code]);
-        this->sections.push_back(section);
+        this->sections.push_back(section_idx);
         this->credits += catalog[code]->credits;
-        catalog[code]->sections[section]->enrolled_IDs.insert(this->student_id);
+        catalog[code]->sections[section_idx]->enrolled_IDs.insert(this->student_id);
 
         return "Enroll " + code + ": SUCCESS";  // Return success message
     }
-
     string Unenroll(const string code, map<string, Course*>& catalog) {
         for (int i = 0; i < this->courses.size(); i++) {
             if (this->courses[i]->code == code) {
@@ -137,7 +138,6 @@ public:
         }
         return "Unenroll " + code + ": ERROR (Student not currently enrolled in course)";
     }
-
     int currentCredits() {
         return this->credits;
     }
