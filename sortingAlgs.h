@@ -132,17 +132,21 @@ void measureAndSort(vector<string>& courseCodes){
 
     //calculate the elapsed time for merge sort
     auto quickSortDuration = chrono::duration_cast<chrono::microseconds>(endQuickSort - startQuickSort);
-    string fasterSortingAlg;
 
-    if(quickSortDuration > mergeSortDuration){
+    cout << endl << "Sorted in " << quickSortDuration.count() << " ms using Quick Sort. " << endl;
+    cout << endl << "Sorted in " << mergeSortDuration.count() << " ms using Merge sort. " << endl;
+
+    if(quickSortDuration < mergeSortDuration){
         printCodes(coursesQuickSort);
-        fasterSortingAlg = "Quick Sort";
-        cout << endl << "Sorted in " << quickSortDuration.count() << " ms using " << fasterSortingAlg << endl;
+        cout << "This means that Quick Sort was the quickest sorting algorithm!" << endl;
     }
     else if(quickSortDuration > mergeSortDuration){
         printCodes(coursesMergeSort);
-        fasterSortingAlg = "Merge Sort";
-        cout << endl << "Sorted in " << mergeSortDuration.count() << " ms using " << fasterSortingAlg << endl;
+        cout << "This means that Merge Sort was the quickest sorting algorithm!" << endl;
+    }
+    else{
+        printCodes(coursesMergeSort);
+        cout << "This means both sorting algorithms took the same amount of time! How cool!" << endl;
     }
 
 }
