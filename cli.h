@@ -43,8 +43,8 @@ public:
 
             bool m = true;
             while(m) {
-                if(correct_input == "Y") {correct = true; m = false; continue;}
-                else if(correct_input == "N") {
+                if(correct_input == "Y" or correct_input == "y") {correct = true; m = false; continue;}
+                else if(correct_input == "N" or correct_input == "n") {
                     cout << "I'm sorry for the misinterpretation. Please enter your name down below." << endl;
                     getline(cin, user_name);
                     m = false;
