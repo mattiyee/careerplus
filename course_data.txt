@@ -499,7 +499,7 @@
 - 3 NPB1001 10 .
 - 5 NPB1001 10 .
 
-# CDA3101 " Introduction to Computer Organization " 3 " Cheryl Resch " ~ COP3503C MAC2311 COT3100.
+# CDA3101 " Introduction to Computer Organization " 3 " Cheryl Resch " ~ COP3503C MAC2311 COT3100 .
 @ Computer Science , Computer Engineering .
 * SECTION 1 250 0
 - 1 CAR0100 9 .
