@@ -43,6 +43,18 @@ class Course {
         int enrolled;  // taken seats
         set<string> enrolled_IDs;  // UFIDs of currently registered students
         Section(int& s, int& e) : seats(s), enrolled(e) {};
+
+        string Unenroll(const string ID) {
+            auto it = enrolled_IDs.find(ID);
+
+            if (it == enrolled_IDs.end()) {
+                return "ERROR (Student not currently enrolled in course)";
+            }
+            enrolled_IDs.erase(ID);
+            enrolled -= 1;
+
+            return "SUCCESS";
+        }
     };
 public:
     string code;  // ex: "COP3530"

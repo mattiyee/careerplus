@@ -34,29 +34,36 @@ public:
     }
     string Register(const string code, map<string, Course*>& catalog, const int section) {
         if (catalog.count(code) != 1) {
-            return code + ": ERROR (Invalid class code)";  // Class not found in catalog
+            return "Enroll " + code + ": ERROR (Invalid class code)";  // Class not found in catalog
         }
         // Attempts to register student for section, returns message based on success or error
         Course* to_add = catalog[code];
         if (section > to_add->sections.size()-1) {
-            return code + ": ERROR (" + to_string(section) + " is invalid section number)";
+            return "Enroll " + code + ": ERROR (" + to_string(section) + " is invalid section number)";
         }
 
-        // 0. CHECK STUDENT HAS ADEQUATE REMAINING CREDITS
+        // 0a. CHECK STUDENT HAS ADEQUATE REMAINING CREDITS
         if (to_add->credits + this->credits > this->credit_limit) {
-            return code + ": ERROR (Credit limit exceeded)";  // Return credit limit reached message
+            return "Enroll " + code + ": ERROR (Credit limit exceeded)";  // Return credit limit reached message
+        }
+
+        // 0b. CHECK STUDENT NOT ALREADY ENROLLED IN COURSE
+        for (auto c : this->courses) {
+            if (c->code == code) {
+                return "Enroll " + code + ": ERROR (Already enrolled in course)";  // Return missing prerequisite message
+            }
         }
 
         // 1. CHECK FOR OPEN SEATS
         if (to_add->openSeats(section) < 1) {
-            return code + ": ERROR (Section " + to_string(section) + " is full)";  // Return full message
+            return "Enroll " + code + ": ERROR (Section " + to_string(section) + " is full)";  // Return full message
         }
 
         // 2a. CHECK FOR PREREQUISITES
         for (string req : to_add->prerequisites) {
             auto it = find(prev_courses.begin(), prev_courses.end(), req);
             if (it == prev_courses.end()) {
-                return code + ": ERROR (Missing prerequisite: " + req + ")";  // Return missing prerequisite message
+                return "Enroll " + code + ": ERROR (Missing prerequisite: " + req + ")";  // Return missing prerequisite message
             }
         }
 
@@ -65,7 +72,7 @@ public:
             auto it = find(to_add->majors.begin(), to_add->majors.end(), this->major);
 
             if (it == to_add->majors.end()) {
-                return code + ": ERROR (Course is restricted to certain majors)";
+                return "Enroll " + code + ": ERROR (Course is restricted to certain majors)";
             }
         }
 
@@ -91,11 +98,30 @@ public:
         this->courses.push_back(catalog[code]);
         this->sections.push_back(section);
         this->credits += catalog[code]->credits;
-        catalog[code]->sections[section]->enrolled_IDs.insert(this->student_id);
+        catalog[code]->sections[section]->Enroll(this->student_id);
 
-        return code + ": SUCCESS";  // Return success message
+        return "Enroll " + code + ": SUCCESS";  // Return success message
     }
+    string Unenroll(const string code, map<string, Course*>& catalog) {
+        for (int i = 0; i < this->courses.size(); i++) {
+            if (this->courses[i]->code == code) {
+                int section = sections[i];
+                string status = catalog[code]->sections[section]->Unenroll(this->student_id);
+                if (status != "SUCCESS") {
+                    return "Unenroll " + code + ": ERROR (Student not currently enrolled in course)";
+                }
+                this->credits -= courses[i]->credits;
+                this->courses.erase(this->courses.begin() + i);
+                this->sections.erase(this->sections.begin() + i);
 
+                return "Unenroll " + code + ": SUCCESS";
+            }
+        }
+        return "Unenroll " + code + ": ERROR (Student not currently enrolled in course)";
+    }
+    int currentCredits() {
+        return this->credits;
+    }
 };
 
 #endif //PROJECT3_STUDENT_H
