@@ -361,7 +361,7 @@
 - 4 MALA3210 3 .
 * SECTION 2 250 0
 - 2 CAR0100 4 .
-- 2 NEB202 7 8.
+- 2 NEB202 7 8 .
 - 4 MALA3210 4 5 .
 * SECTION 3 250 0
 - 2 CAR0100 2 3 .
@@ -369,11 +369,11 @@
 - 4 MALA3210 3 .
 * SECTION 4 250 0
 - 2 CAR0100 4 .
-- 5 NEB202 5 6.
+- 5 NEB202 5 6 .
 - 4 MALA3210 4 5 .
 * SECTION 4 250 0
 - 2 CAR0100 4 .
-- 3 NEB202 5 6.
+- 3 NEB202 5 6 .
 - 4 MALA3210 4 5 .
 
 # EEL4712C " Digital Design " 4 " Rickard Ewetz " ~ EEL3701C .
@@ -599,23 +599,23 @@
 - 1 WEIL270 4 .
 - 3 WEIL270 4 .
 - 5 WEIL270 4 .
-- 3 ROG129 5 7 . 
+- 3 ROG129 5 7 .
 * SECTION 2 250 0
 - 1 WEIL270 4 .
 - 3 WEIL270 4 .
 - 5 WEIL270 4 .
-- 5 ROG129 5 6 . 
+- 5 ROG129 5 6 .
 * SECTION 3 250 0
 - 1 WEIL270 4 .
 - 3 WEIL270 4 .
 - 5 WEIL270 4 .
-- 5 ROG129 6 7 . 
+- 5 ROG129 6 7 .
 
 # ABE4042C " Biological Engineering Design 1 " 2 " Ziynet Boz " .
 @ Biological/Agricultural Engineering .
 * SECTION 1 250 0
 - 5 WEIL270 7 8 .
-- 3 ROG129 7 . 
+- 3 ROG129 7 .
 * SECTION 2 250 0
 - 5 WEIL270 7 8 .
 - 3 ROG129 8 .
