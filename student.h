@@ -4,8 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
-#include <algorithm>
-#include "Course.h"
+#include "course.h"
 using namespace std;
 
 #ifndef PROJECT3_STUDENT_H
@@ -33,37 +32,45 @@ public:
         this->credits = 0;
         this->credit_limit = 18;
     }
-
-    // Getters
-    string getName() const {return name;}
-    string getUserInfo() const{return name + " : " + student_id + " " + major + " : " + to_string(year);}
-    vector<Course*> getCurrentCourses() const {return courses;}
-    vector<string> getPreviousCourses() const {return prev_courses;}
-
-    string Register(string& code, map<string, Course*>& catalog, int& section) {
+    string Register(const string code, map<string, Course*>& catalog, const int section) {
+        if (catalog.count(code) != 1) {
+            return code + ": ERROR (Invalid class code)";  // Class not found in catalog
+        }
         // Attempts to register student for section, returns message based on success or error
         Course* to_add = catalog[code];
+        if (section > to_add->sections.size()-1) {
+            return code + ": ERROR (" + to_string(section) + " is invalid section number)";
+        }
 
         // 0. CHECK STUDENT HAS ADEQUATE REMAINING CREDITS
-        if (to_add->credits + this->credits > credit_limit) {
-            return "CREDIT EXCESS";  // Return credit limit reached message
+        if (to_add->credits + this->credits > this->credit_limit) {
+            return code + ": ERROR (Credit limit exceeded)";  // Return credit limit reached message
         }
 
         // 1. CHECK FOR OPEN SEATS
         if (to_add->openSeats(section) < 1) {
-            return "FULL";  // Return full message
+            return code + ": ERROR (Section " + to_string(section) + " is full)";  // Return full message
         }
 
-        // 2. CHECK FOR PREREQUISITES
-        for (const string& req : to_add->prerequisites) {
+        // 2a. CHECK FOR PREREQUISITES
+        for (string req : to_add->prerequisites) {
             auto it = find(prev_courses.begin(), prev_courses.end(), req);
             if (it == prev_courses.end()) {
-                return "MISSING" + req;  // Return missing prerequisite message
+                return code + ": ERROR (Missing prerequisite: " + req + ")";  // Return missing prerequisite message
+            }
+        }
+
+        // 2b. CHECK FOR MAJOR RESTRICTIONS
+        if (to_add->majors[0] != "Any") {
+            auto it = find(to_add->majors.begin(), to_add->majors.end(), this->major);
+
+            if (it == to_add->majors.end()) {
+                return code + ": ERROR (Course is restricted to certain majors)";
             }
         }
 
         // 3. CHECK FOR TIME CONFLICTS
-        vector<vector<int>> new_times = to_add->allSectionTimes(section);
+        /*vector<vector<int>> new_times = to_add->allSectionTimes(section);
         vector<vector<int>> current_times;
         // Loop compares class times for all courses student is already registered in
         for (Course* c : this->courses) {
@@ -79,13 +86,14 @@ public:
                     }
                 }
             }
-        }
+        }*/
         // NO time conflict found, register student
         this->courses.push_back(catalog[code]);
         this->sections.push_back(section);
         this->credits += catalog[code]->credits;
+        catalog[code]->sections[section]->enrolled_IDs.insert(this->student_id);
 
-        return "SUCCESS";  // Return success message
+        return code + ": SUCCESS";  // Return success message
     }
 
 };

@@ -76,6 +76,7 @@ map<string, Course*> parseCourseData(const string& file_name) {
 
                 Course* temp = new Course(course_code, course_name, professor, credits, prerequisites);
                 course_output[course_code] = temp;
+                prerequisites.clear();
                 continue;
             }
             else if (indicator == "@") {
@@ -98,7 +99,7 @@ map<string, Course*> parseCourseData(const string& file_name) {
                 majors.push_back(major);
                 major = "";
                 course_output[course_code]->addMajors(majors);
-                majors = {};
+                majors.clear();
             }
             else if (indicator == "*") {
                 ss >> indicator;
@@ -196,7 +197,7 @@ map<string, Student*> parseStudentData(const string& file_name) {
                         // cout << endl;
                         temp = new Student(student_id, student_year, major, student_name, prev_courses);
                         student_list[student_id] = temp;
-                        prev_courses = {};
+                        prev_courses.clear();
                     } // Creates new subject object AND adds previous courses taken (for existing students)
                 }
             }
@@ -208,16 +209,30 @@ map<string, Student*> parseStudentData(const string& file_name) {
 
 int main() {
     // generateStudents(100000, "/Users/matti/CLionProjects/careerplus/generate_students.txt");
+
+
+    /*map<string, Course*> course_catalog = parseCourseData("/Users/catherinewu/Downloads/careerplus-main/course_data.txt");
     map<string, Course*> course_catalog = parseCourseData("/Users/catherinewu/Downloads/careerplus-main/course_data.txt");
+    map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Downloads/careerplus-main/generate_students.txt");
     map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Downloads/careerplus-main/generate_students_temp.txt");
     // cout << "complete" << endl;
     // student_database["00008015"]->Register("MAC2311", course_catalog, 1);
-
     User new_user;
     new_user.initializeData();
     cout << "complete" << endl;
+    cout << "complete" << endl;
+    cout << student_database["00008015"]->Register("MAC2311", course_catalog, 1) << endl;  // should fail due to missing prereq
+    new_user.mainMenu();*/
 
-    new_user.mainMenu();
+
+    /*map<string, Course*> course_catalog = parseCourseData("/Users/catherinewu/Downloads/careerplus-main/course_data.txt");
+    map<string, Student*> student_database = parseStudentData("/Users/catherinewu/Downloads/careerplus-main/generate_students.txt");
+    cout << "complete" << endl;
+
+    cout << student_database["00008015"]->Register("MAC2311", course_catalog, 1) << endl;  // should fail due to missing prereq
+    cout << student_database["00008015"]->Register("MAC2312", course_catalog, 1) << endl;  // should fail due to missing prereq
+    cout << student_database["00008015"]->Register("PHY2048", course_catalog, 3) << endl;  // should fail due to overlap in times*/
+
 
     return 0;
 }
