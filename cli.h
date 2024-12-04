@@ -213,9 +213,9 @@ public:
         }
     }
 
-    void initializeData() {
-        parseCourseData("/Users/matti/CLionProjects/careerplus/course_data.txt");
-        parseStudentData("/Users/matti/CLionProjects/careerplus/generate_students.txt");
+    void initializeData(const string& course_file_name, const string& student_file_name) {
+        parseCourseData(course_file_name);
+        parseStudentData(student_file_name);
         cout << "Parsing successfully complete." << endl << endl;
         string user_name;
         string user_id;
