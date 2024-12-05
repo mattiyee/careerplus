@@ -15,7 +15,7 @@ class User {
 private:
     Student* user; // User data
     unordered_map<string, Course*> course_output; // Data of all courses after parsing data
-    map<string, Student*> student_list; // Data of all students after parsing data
+    unordered_map<string, Student*> student_list; // Data of all students after parsing data
     vector<string> major_list; // List of all available majors
 
 public:
@@ -52,6 +52,7 @@ public:
                     // Resetting variables
 
                     ss >> course_code;
+                    //cout << course_code << endl;
                     ss >> indicator;
                     ss >> indicator;
                     while (indicator != "\"") {
@@ -132,7 +133,7 @@ public:
         return course_output;
     }
 
-    map<string, Student*> parseStudentData(const string& file_name) {
+    unordered_map<string, Student*> parseStudentData(const string& file_name) {
         ifstream text_file(file_name);
         if (text_file.is_open()) {
             string line;
@@ -332,7 +333,7 @@ public:
         cout << "Thank you for registering for CareerPlus!\nWhat would you like to do next? (Please select an option below.)" << endl;
         while(true) {
             string selected_option;
-            cout << "1. View current schedule\n2. Register for a course\n3. Search for a student\n4. Show list of course codes\n5. Exit" << endl;
+            cout << "1. View current schedule\n2. Register for a course\n3. Search for a student\n4. Show list of course codes\n5. Sort students for funzies\n6. Exit" << endl;
             getline(cin, selected_option);
 
             if(selected_option == "1") {
@@ -398,14 +399,43 @@ public:
                     }
                 }
             } else if(selected_option == "4"){
-                cout << "Here is list of all the course codes, sorted in alphabetical order!\n" << endl;
+                cout << "Here is a list of all the courses offered, sorted in alphabetical order!\n" << endl;
                 vector<string> courseCodes;
                 for(const auto& cc: course_output){
                     courseCodes.push_back(cc.first);
                 }
-                measureAndSort(courseCodes);
+                useMergeSort(courseCodes);
             }
-            else if(selected_option == "5") {
+            else if(selected_option == "5"){
+                cout << "Time for the fun part! Let's see which sorting algorithm can sort all your peers' names/ids the fastest!" << endl;
+                cout << "Would you like to sort by name or student ID? (N / ID)" << endl;
+                string option;
+                while(true){
+                    getline(cin, option);
+                    if(option == "N" or option == "n"){
+                        vector<string> students;
+                        for(const auto& ids: student_list){
+                            students.push_back(ids.second->getName());
+                        }
+                        measureAndSortStudents(students);
+                        break;
+                    }
+                    else if(option == "ID" or option == "id"){
+                        vector<string> students;
+                        for(const auto& ids: student_list){
+                            students.push_back(ids.first);
+                        }
+                        measureAndSortStudents(students);
+                        break;
+                    }
+                    else{
+                        cout << "Invalid option! Please select one of the available options." << endl;
+                        continue;
+                    }
+                }
+
+            }
+            else if(selected_option == "6") {
                 cout << "Thank you for using CareerPlus! Have a great day!" << endl;
                 break;
             }
@@ -434,29 +464,29 @@ public:
     }
 
     void printUserInfo(const string& parse) {
-         string temp;
-         string temp_two;
-         stringstream ss(parse);
-         while(temp != ":") {
-             temp_two += temp;
-             ss >> temp;
-             temp_two += " ";
-         }
-         cout << "--------------------\nName:" << temp_two << endl;
-         ss >> temp;
-         cout << "ID: " << temp << endl;
-         ss >> temp;
-         ss >> temp;
-         temp_two = "";
-         while(temp != ":") {
-             temp_two += temp;
-             ss >> temp;
-             temp_two += " ";
-         }
-         cout << "Major: " << temp_two << endl;
-         ss >> temp;
-         cout << "Year: " << temp << "\n--------------------" << endl;
-     }
+        string temp;
+        string temp_two;
+        stringstream ss(parse);
+        while(temp != ":") {
+            temp_two += temp;
+            ss >> temp;
+            temp_two += " ";
+        }
+        cout << "--------------------\nName:" << temp_two << endl;
+        ss >> temp;
+        cout << "ID: " << temp << endl;
+        ss >> temp;
+        ss >> temp;
+        temp_two = "";
+        while(temp != ":") {
+            temp_two += temp;
+            ss >> temp;
+            temp_two += " ";
+        }
+        cout << "Major: " << temp_two << endl;
+        ss >> temp;
+        cout << "Year: " << temp << "\n--------------------" << endl;
+    }
 };
 
 #endif //CAREERPLUS_CLI_H
