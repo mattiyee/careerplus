@@ -409,12 +409,12 @@ public:
                     }
                 }
             } else if (selected_option == "4"){
-                cout << "Here is list of all the course codes, sorted in alphabetical order!\n" << endl;
+                cout << "Here is a list of all the courses offered, sorted in alphabetical order!\n" << endl;
                 vector<string> courseCodes;
                 for(const auto& cc: course_output){
                     courseCodes.push_back(cc.first);
                 }
-                measureAndSortCC(courseCodes);
+                useMergeSort(courseCodes);
             } else if (selected_option == "5") {
                 cout
                         << "Time for the fun part! Let's see which sorting algorithm can sort all your peers' names/ids the fastest!"
