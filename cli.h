@@ -313,13 +313,7 @@ public:
                     cout << "You are not registered in any courses!" << endl;
                 } else {
                     cout << "These are your registered courses:\n--------------------" << endl;
-                    for (const auto& course : user->getCourses()) {
-                        if (course) {
-                            cout << "Course: " << course->code << ": " << course->name << endl;
-                            cout << "Professor: " << course->professor << endl;
-                            // TODO: Display sections
-                        }
-                    }
+                    user->displayStudentCourses();
                 }
             } else if (selected_option == "2") {
                 string input_course;
@@ -333,26 +327,18 @@ public:
                     cout << "Here are the available sections for " << input_course << ". Please type the number of the section you wish to enroll in." << endl;
                     selected->displaySections();
                     cout << "If you are not interested in registering for a course, please type \"E\" to exit." << endl;
-                    bool input = true;
-                    bool valid = true;
-                    while(input) {
+                    while(true) {
+                        string invalid = "Invalid section. Please type a valid section number or \"E\" to exit.";
                         getline(cin, input_section);
-                        if (input_section.size() != 1) {
-                            valid = false;
-                        } // Checking if there's only one character in the input
-                        if (valid) {
-                            cout << input_section << endl;
+                        if (input_section.size() == 1) {
                             if (input_section == "E" || input_section == "e") {
-                                input = false; // Exits while loop
-                            } else {
-                                for (char a : input_section) {
-                                    if (isdigit(a)) {cout << user->Register(input_course, course_output, stoi(input_section)) << endl; input = false;}
-                                    else {valid = false;}
-                                }
+                                break;
                             }
-                        }
-                        if (!valid) {cout << "Invalid section. Please type in your desired section, or if you'd like to exit please type \"E\"." << endl;}
-                        valid = true;
+                            if (isdigit(input_section[0])) {
+                                cout << user->Register(input_course, course_output, stoi(input_section)) << endl;
+                                break;
+                            } else {cout << invalid << endl;}
+                        } else {cout << invalid << endl;}
                     }
                 } else {
                     cout << "Course code " << input_course << " cannot be found. Returning to Main Menu..." << endl;

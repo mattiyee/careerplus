@@ -43,12 +43,6 @@ public:
     vector<Course*> getCourses() {
         return courses;
     }
-    vector<int> getSections() {
-        return sections;
-    }
-    vector<string> getPrevious() {
-        return prev_courses;
-    }
     string Register(const string code, unordered_map<string, Course*>& catalog, const int section) {
         int section_idx = section - 1;
         if (catalog.count(code) != 1) {
@@ -140,6 +134,30 @@ public:
     }
     int currentCredits() {
         return this->credits;
+    }
+
+    void displayStudentCourses() {
+        vector<vector<int>> current_times;
+        string days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", ""};
+
+        for (int day = 0; day < 5; day++) {
+            bool hasCourses = false;
+            cout << days[day] << ":" << endl;
+
+            for (int c = 0; c < this->courses.size(); c++) {
+                int registered_section = this->sections[c]; // Obtain registered student section number
+                current_times = this->courses[c]->allSectionTimes(registered_section);
+
+                for (int period : current_times[day]) {
+                    if (!hasCourses) {hasCourses = true;}
+                    cout << "| Course: " << this->courses[c]->code << " (Section #" << registered_section + 1 << ")" << endl;
+                    cout << "| Professor: " << this->courses[c]->professor << endl;
+                    cout << "| Meeting Times: P" << period << endl;
+                }
+            }
+            if (!hasCourses) {cout << "| No courses scheduled." << endl;}
+            cout << "--------------------" << endl;
+        }
     }
 };
 
