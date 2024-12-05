@@ -408,7 +408,7 @@ void generateStudents(int num, const string& output_addr) {
                     cc.push_back("ESI4356");
                     cc.push_back("ESI4523");
                 }
-            } else {
+            } else if (year == 4) {
                 cc.push_back("COT3100");
                 cc.push_back("COP2332C");
                 cc.push_back("ESI4356");

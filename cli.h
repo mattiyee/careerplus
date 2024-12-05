@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <stdexcept>
 #include "student.h"
-#include "Course.h"
+#include "course.h"
 #include "sortingAlgs.h"
 using namespace std;
 
@@ -52,7 +52,6 @@ public:
                     // Resetting variables
 
                     ss >> course_code;
-                    //cout << course_code << endl;
                     ss >> indicator;
                     ss >> indicator;
                     while (indicator != "\"") {
@@ -212,6 +211,8 @@ public:
             text_file.close();
             return student_list;
         }
+        cout << "Problem opening student data text file. Please recheck file and path and try again." << endl;
+        return  student_list;
     }
 
     vector<string> obtainMajors() {
@@ -277,7 +278,7 @@ public:
                     valid = false;
                 }
                 if (valid) {check = true;}
-                else {cout << "Invalid major type! Please check you spelt your major correctly." << endl;}
+                else {cout << "Invalid major type! Please check you spell your major correctly." << endl;}
             }
             check = false;
             cout << "What year are you? (1 for Freshman, 2 for Sophomore, etc.)" << endl;
@@ -294,19 +295,7 @@ public:
                 if (valid) {check = true;}
                 else {cout << "Invalid year! Please type an appropriate input. (1 for Freshman, 2 for Sophomore, etc.)" << endl;}
             }
-            check = false;
-            cout << "Have you taken any prerequisite classes? If so, please enter the course code of ONE class below." <<
-            " If you have not, please type \"N\"." << endl;
-            string temp_input;
-            while (!check) {
-                getline(cin, temp_input);
-                if (temp_input == "N" || temp_input == "n") {
-                    check = true; // Exit function
-                    break;
-                }
-                // TODO: Add prerequisite function
-                cout << "Class code " << temp_input << " successful. Do you have another class to add? If not, please type \"N\"." << endl;
-            }
+
             cout << user_name << ", you entered that you are a " << user_major << " with an ID number of " << user_id << ". Is this correct? (Y/N)" << endl;
             getline(cin, correct_input);
 
@@ -328,13 +317,32 @@ public:
         int year = stoi(user_year);
         user = new Student(user_id, year, user_major, user_name);
         student_list[user_id] = user;
+
+        cout << "Have you taken any prerequisite classes? If so, please enter the course codes seperated by spaces." << endl <<
+             "Write an \"N\" after the last class. If you do not have prerequisites, please just type \"N\"." << endl << "Ex: CHM2045 CHM2046 MAC2311 N" << endl;
+        string course_list;
+        getline(cin, course_list);
+        stringstream ss(course_list);
+        string course;
+        string temp_course;
+        ss >> course;
+        while (course != "N" and course != "n") {
+            auto it2 = course_output.find(course);
+            if (it2 == course_output.end()) {
+                cout << "Course code " << course << " cannot be found. Please enter another code below or \"N\" to skip this course." << endl;
+                cin >> course;
+            } else {
+                user->addPrereq(course);
+                ss >> course;
+            }
+        }
     }
 
     void mainMenu(){
         cout << "Thank you for registering for CareerPlus!\nWhat would you like to do next? (Please select an option below.)" << endl;
         while(true) {
             string selected_option;
-            cout << "1. View current schedule\n2. Register for a course\n3. Search for a student\n4. Show list of course codes\n5. Sort students for funzies\n6. Exit" << endl;
+            cout << "1. View current schedule\n2. Register for a course\n3. Search for a student\n4. Show list of course codes\n5. Unenroll from a course\n6. Exit" << endl;
             getline(cin, selected_option);
 
             if(selected_option == "1") {
@@ -399,44 +407,20 @@ public:
                         continue;
                     }
                 }
-            } else if(selected_option == "4"){
-                cout << "Here is a list of all the courses offered, sorted in alphabetical order!\n" << endl;
+            } else if (selected_option == "4"){
+                cout << "Here is list of all the course codes, sorted in alphabetical order!\n" << endl;
                 vector<string> courseCodes;
                 for(const auto& cc: course_output){
                     courseCodes.push_back(cc.first);
                 }
-                useMergeSort(courseCodes);
+                measureAndSort(courseCodes);
+            } else if (selected_option == "5") {
+                string code;
+                cout << "Enter course code of course you want to unenroll from: ";
+                cin >> code;
+                cout << user->Unenroll(code, course_output) << endl;
             }
-            else if(selected_option == "5"){
-                cout << "Time for the fun part! Let's see which sorting algorithm can sort all your peers' names/ids the fastest!" << endl;
-                cout << "Would you like to sort by name or student ID? (N / ID)" << endl;
-                string option;
-                while(true){
-                    getline(cin, option);
-                    if(option == "N" or option == "n"){
-                        vector<string> students;
-                        for(const auto& ids: student_list){
-                            students.push_back(ids.second->getName());
-                        }
-                        measureAndSortStudents(students);
-                        break;
-                    }
-                    else if(option == "ID" or option == "id"){
-                        vector<string> students;
-                        for(const auto& ids: student_list){
-                            students.push_back(ids.first);
-                        }
-                        measureAndSortStudents(students);
-                        break;
-                    }
-                    else{
-                        cout << "Invalid option! Please select one of the available options." << endl;
-                        continue;
-                    }
-                }
-
-            }
-            else if(selected_option == "6") {
+            else if (selected_option == "6") {
                 cout << "Thank you for using CareerPlus! Have a great day!" << endl;
                 break;
             }
@@ -465,29 +449,29 @@ public:
     }
 
     void printUserInfo(const string& parse) {
-        string temp;
-        string temp_two;
-        stringstream ss(parse);
-        while(temp != ":") {
-            temp_two += temp;
-            ss >> temp;
-            temp_two += " ";
-        }
-        cout << "--------------------\nName:" << temp_two << endl;
-        ss >> temp;
-        cout << "ID: " << temp << endl;
-        ss >> temp;
-        ss >> temp;
-        temp_two = "";
-        while(temp != ":") {
-            temp_two += temp;
-            ss >> temp;
-            temp_two += " ";
-        }
-        cout << "Major: " << temp_two << endl;
-        ss >> temp;
-        cout << "Year: " << temp << "\n--------------------" << endl;
-    }
+         string temp;
+         string temp_two;
+         stringstream ss(parse);
+         while(temp != ":") {
+             temp_two += temp;
+             ss >> temp;
+             temp_two += " ";
+         }
+         cout << "--------------------\nName:" << temp_two << endl;
+         ss >> temp;
+         cout << "ID: " << temp << endl;
+         ss >> temp;
+         ss >> temp;
+         temp_two = "";
+         while(temp != ":") {
+             temp_two += temp;
+             ss >> temp;
+             temp_two += " ";
+         }
+         cout << "Major: " << temp_two << endl;
+         ss >> temp;
+         cout << "Year: " << temp << "\n--------------------" << endl;
+     }
 };
 
 #endif //CAREERPLUS_CLI_H
