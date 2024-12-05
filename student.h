@@ -34,6 +34,9 @@ public:
         this->credits = 0;
         this->credit_limit = 18;
     }
+    void addPrereq(const string& code) {
+        this->prev_courses.push_back(code);
+    }
     string getName() const {
         return name;
     }
@@ -79,7 +82,13 @@ public:
             }
         }
 
-        // 2b. CHECK FOR MAJOR RESTRICTIONS
+        // 2b. CHECK STUDENT HAS NOT ALREADY TAKEN COURSE
+        auto it = find(prev_courses.begin(), prev_courses.end(), code);
+        if (it != prev_courses.end()) {
+            return "Enroll " + code + ": ERROR (Course already taken)";
+        }
+
+        // 2c. CHECK FOR MAJOR RESTRICTIONS
         if (to_add->majors[0] != "Any") {
             auto it = find(to_add->majors.begin(), to_add->majors.end(), this->major);
 
@@ -115,7 +124,7 @@ public:
 
         return "Enroll " + code + ": SUCCESS";  // Return success message
     }
-    string Unenroll(const string code, map<string, Course*>& catalog) {
+    string Unenroll(const string code, unordered_map<string, Course*>& catalog) {
         for (int i = 0; i < this->courses.size(); i++) {
             if (this->courses[i]->code == code) {
                 int section = sections[i];

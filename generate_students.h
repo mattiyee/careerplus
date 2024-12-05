@@ -396,6 +396,9 @@ void generateStudents(int num, const string& output_addr) {
             }
         } else if (major_spread <= 84) {
             majors.push_back("Industrial Engineering");
+            if (year == 1) {
+
+            }
             if (year == 2) {
                 if (cs < 50) {
                     cc.push_back("COT3100");
