@@ -227,7 +227,7 @@ public:
         string user_name;
         string user_id;
         string user_major;
-        int user_year = 1; // 1 = freshman, 2 = sophomore, 3 = junior, 4 = senior, 5 = other
+        string user_year; // 1 = freshman, 2 = sophomore, 3 = junior, 4 = senior, 5 = other
         bool correct = false;
         bool check = false;
         // Initializing data
@@ -278,7 +278,33 @@ public:
                 if (valid) {check = true;}
                 else {cout << "Invalid major type! Please check you spelt your major correctly." << endl;}
             }
-            // TODO: Compare major input with list of majors
+            check = false;
+            cout << "What year are you? (1 for Freshman, 2 for Sophomore, etc.)" << endl;
+            while (!check) {
+                getline(cin, user_year);
+                bool valid = true;
+                if(user_year.size() == 1){
+                    for (char d : user_year) {
+                        if (!isdigit(d)) {
+                            valid = false;
+                        }
+                    }
+                } else {valid = false;}
+                if (valid) {check = true;}
+                else {cout << "Invalid year! Please type an appropriate input. (1 for Freshman, 2 for Sophomore, etc.)" << endl;}
+            }
+            check = false;
+            cout << "Have you taken any prerequisite classes? If so, please enter the course code of ONE class below." <<
+            "If you have not, please type \"N\"." << endl;
+            string temp_input;
+            while (!check) {
+                getline(cin, temp_input);
+                if (temp_input == "N" || temp_input == "n") {
+                    check = true; // Exit function
+                }
+                // TODO: Add prerequisite function
+                cout << "Class code " << temp_input << "successful. Do you have another class to add? If not, please type \"N\"." << endl;
+            }
             cout << user_name << ", you entered that you are a " << user_major << " with an ID number of " << user_id << ". Is this correct? (Y/N)" << endl;
             getline(cin, correct_input);
 
@@ -297,7 +323,8 @@ public:
                 }
             }
         }
-        user = new Student(user_id, user_year, user_major, user_name);
+        int year = stoi(user_year);
+        user = new Student(user_id, year, user_major, user_name);
         student_list[user_id] = user;
     }
 
