@@ -296,15 +296,16 @@ public:
             }
             check = false;
             cout << "Have you taken any prerequisite classes? If so, please enter the course code of ONE class below." <<
-            "If you have not, please type \"N\"." << endl;
+            " If you have not, please type \"N\"." << endl;
             string temp_input;
             while (!check) {
                 getline(cin, temp_input);
                 if (temp_input == "N" || temp_input == "n") {
                     check = true; // Exit function
+                    break;
                 }
                 // TODO: Add prerequisite function
-                cout << "Class code " << temp_input << "successful. Do you have another class to add? If not, please type \"N\"." << endl;
+                cout << "Class code " << temp_input << " successful. Do you have another class to add? If not, please type \"N\"." << endl;
             }
             cout << user_name << ", you entered that you are a " << user_major << " with an ID number of " << user_id << ". Is this correct? (Y/N)" << endl;
             getline(cin, correct_input);
